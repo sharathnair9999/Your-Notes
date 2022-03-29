@@ -30,19 +30,17 @@ a{
   text-decoration: none;
   color: var(--text-white);
 }
-
- /* Track */
- ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 5px;
 }
 
-/* Handle */
+::-webkit-scrollbar-track {
+  background: var(--text-white); 
+  border-radius: 5px;
+}
+
 ::-webkit-scrollbar-thumb {
-  background:  linear-gradient(0deg, var(--body-bg-light-dark) 0%, var(--body-bg-full-dark) 100%);
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--body-bg-light-dark);
+  border-radius: 5px;
+  background: var(--body-bg-light-dark); 
 }

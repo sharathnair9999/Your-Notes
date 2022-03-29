@@ -9,6 +9,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import NavBar from "../components/NavBar/NavBar";
 import Footer from "../components/Footer/Footer";
 import NoteCard from "../components/NoteCard/NoteCard";
+import { constants } from "../constants";
 
 export {
   Login,
@@ -22,4 +23,5 @@ export {
   NavBar,
   Footer,
   NoteCard,
+  constants
 };

@@ -1,0 +1,118 @@
+.landing-page {
+  height: 100vh;
+}
+
+.landing-page-section {
+  margin: 3rem;
+  background-color: var(--body-bg-light-dark);
+  height: 90vh;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.landing-page-section .site-name {
+  font-size: 4rem;
+  transition: all 0.2s ease;
+  margin: auto auto 2rem 0;
+}
+
+.site-name-1 {
+  color: var(--black);
+}
+
+.site-name-2 {
+  color: var(--all-white);
+}
+
+.landing-img {
+  max-width: 30rem;
+  min-width: 15rem;
+}
+.landing-img img {
+  width: 100%;
+}
+
+.landing-page-section .hero-text {
+  font-size: 2rem;
+}
+
+.landing-page-section .join-section {
+  margin-top: 2rem;
+}
+
+.join-now {
+  background-color: var(--cta-1);
+  color: var(--gray);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bolder;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.join-now:hover {
+  background-color: var(--body-bg-full-dark);
+  color: var(--text-white);
+  transition: all 0.2s ease;
+}
+
+.sign-in {
+  color: var(--text-white);
+  border-radius: 5px;
+  font-weight: bolder;
+  font-size: 1rem;
+}
+
+.sign-in:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+  .landing-page-section {
+    flex-wrap: wrap;
+    height: 95vh;
+    padding: 1rem;
+    align-content: flex-start;
+    align-items: flex-start;
+    gap: 3rem;
+    margin: 1rem;
+  }
+  .landing-page-section .join-section {
+    position: absolute;
+    bottom: 10px;
+  }
+  .landing-page-section .site-name {
+    margin-bottom: 1rem;
+  }
+  .landing-page-section .hero-text {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  .landing-page-section .site-name {
+    font-size: 2.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .landing-img {
+    max-width: 20rem;
+  }
+  .join-now {
+    background-color: var(--cta-1);
+    color: var(--gray);
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .landing-page-section .hero-text {
+    font-size: 1.1rem;
+  }
+}

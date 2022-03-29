@@ -1,0 +1,7 @@
+@import url("/node_modules/mockman-js/dist/style.css");
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}

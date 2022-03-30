@@ -10,7 +10,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="login" element={<Login/>}/>
         <Route path="signup" element={<Signup/>}/>
-        <Route path="all-notes" element={<NotesPage />} />
+        <Route path="notes" element={<NotesPage />} />
         <Route path="mockapi" element={<Mockman />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>

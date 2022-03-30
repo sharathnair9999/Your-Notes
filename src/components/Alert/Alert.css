@@ -1,0 +1,42 @@
+.alert-box {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: 1px solid var(--black);
+  color: var(--text-white);
+  top: -3rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.alert-box p{
+  margin: 0;
+  padding: 0;
+}
+
+.show-alert {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.hide-alert {
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: all 0.3s ease-in-out;
+}
+
+.success {
+  background-color: var(--green);
+}
+
+.error {
+  background-color: var(--red);
+}
+
+.warning {
+  background-color: var(--yellow);
+}

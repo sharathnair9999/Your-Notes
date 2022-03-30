@@ -1,0 +1,136 @@
+.signup-page {
+  height: 100vh;
+}
+
+.signup-page-section {
+  background-color: var(--body-bg-light-dark);
+  padding: 1rem 2rem;
+  margin: 2rem 3rem;
+  border-radius: 10px;
+  height: 90vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+}
+
+.signup-image-container {
+  max-width: 30rem;
+  margin: auto 0;
+  flex: 1;
+}
+
+.avatar-img{
+  width: 5rem;
+}
+
+.signup-image-container img{
+  width: 100%;
+  height: auto;
+}
+
+.signup-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.show-icon{
+  cursor: pointer;
+}
+
+.signup-form h1 {
+  font-size: 2.5rem;
+}
+
+.signup-form .inputs-container {
+  max-width: 30rem;
+  height: 100%;
+}
+
+.signup-form .inputs-container .input-box {
+  width: 100%;
+  padding: 5px 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-white);
+  font-size: 1.1rem;
+}
+
+.signup-form .inputs-container fieldset legend {
+  padding: 0 5px;
+}
+
+.signup-form .inputs-container fieldset {
+  border: 1px solid var(--body-bg-full-dark);
+  border-radius: 10px;
+  padding: 0px 10px;
+}
+
+.log-in-btn {
+  background-color: var(--cta-1);
+  color: var(--gray);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bolder;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+  width: 100%;
+  margin: 0.5rem 0;
+  outline: none;
+}
+
+.log-in-btn:hover {
+  background-color: var(--body-bg-full-dark);
+  color: var(--text-white);
+  transition: all 0.2s ease;
+}
+
+.accept-terms-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.accept-terms-container input {
+  accent-color: var(--body-bg-full-dark);
+  height: 12px;
+  width: 12px;
+}
+
+@media screen and (max-width:768px) {
+
+  .signup-page-section{
+    height: 90vh;
+    margin: 2rem;
+    padding: 1rem;
+  }
+
+  .signup-form h1{
+    font-size: 1.5rem;
+  }
+
+  .log-in-btn{
+    padding: 2px 4px;
+    width: 80%;
+    margin: 5px auto;
+  }
+
+  .signup-image-container{
+    display: none;
+  }
+
+  .signup-form{
+    font-size: 75%;
+    gap: 5px;
+  }
+
+  .existing-user{
+    font-size: 0.7rem;
+  }
+
+}

@@ -71,7 +71,7 @@ const UserProvider = ({ children }) => {
     try {
       const { data } = await axios.post("/api/auth/signup", details);
       const { createdUser } = data;
-      const { archives, firstName, notes } = createdUser;
+      const {  firstName } = createdUser;
       showAlert(
         "success",
         `Welcome to Your Notes Family,  ${capitalize(firstName)}`,

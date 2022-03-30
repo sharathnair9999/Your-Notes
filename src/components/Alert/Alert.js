@@ -5,7 +5,6 @@ import "./Alert.css";
 const Alert = () => {
   const { userState } = useDetails();
   const {type, message} = userState.alert
-  console.log(type, message);
   return (
     <div className={`alert-box ${type} ${message ? "show-alert" :"hide-alert"}`}>
       <p>{message}</p>

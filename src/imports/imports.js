@@ -14,6 +14,8 @@ import Alert from '../components/Alert/Alert'
 import { useDetails } from "../Contexts/User-Context/user-context";
 import { capitalize } from "../Contexts/User-Context/user-utils";
 import Password from "../components/Password/Password";
+import UserAvatar from "../components/UserAvatar/UserAvatar";
+
 
 export {
   Alert,
@@ -31,5 +33,6 @@ export {
   constants,
   useDetails,
   capitalize,
-  Password
+  Password,
+  UserAvatar
 };

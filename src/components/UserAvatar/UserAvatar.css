@@ -1,0 +1,36 @@
+.user-avatar{
+  position: fixed;
+  right: 2rem;
+  top: 1rem;
+  z-index: 100;
+
+}
+
+.user-avatar-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  font-weight: bold;
+  gap: 5px;
+  background-color: var(--cta-1);
+  border-radius: 50%;
+  height: 4rem;
+  width: 4rem;
+}
+
+.user-avatar-container .avatar-icon{
+  color: var(--body-bg-light-dark);
+  padding-top: 1rem;
+  font-size: 2.1rem;
+}
+
+.user-avatar-container .name{
+  color: var(--body-bg-light-dark);
+
+}
+
+.user-avatar-container .name{
+  gap: 2px;
+}

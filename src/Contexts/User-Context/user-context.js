@@ -78,7 +78,6 @@ const UserProvider = ({ children }) => {
         3000
       );
     } catch (error) {
-      console.log(error)
       showAlert("error", `Couldn't Create Your Profile at this moment!`, 3000);
     }
   };

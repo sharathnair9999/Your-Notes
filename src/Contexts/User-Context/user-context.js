@@ -1,20 +1,31 @@
-import { createContext, useReducer, useContext, useState } from "react";
-import { initialUserState, userReducer } from "./user-reducer";
+import { createContext, useReducer, useContext } from "react";
+import {
+  initialUserState,
+  userReducer,
+  initialAlertState,
+} from "./user-reducer";
 import { capitalize } from "./user-utils";
 const UserContext = createContext(initialUserState);
 
 const UserProvider = ({ children }) => {
   const [userState, userDispatch] = useReducer(userReducer, initialUserState);
-  const [alert, setAlert] = useState({ type: "", message: "" });
 
-  const showAlert  = (type, message, delay) => {
-    setAlert({type:type, message:message})
+  const showAlert = (type, message, delay) => {
+    userDispatch({
+      type: "SHOW_ALERT",
+      payload: { type: type, message: message, show: true },
+    });
     setTimeout(() => {
-      setAlert({type:"", message:""})
+      userDispatch({ type: "SHOW_ALERT", payload: initialAlertState });
     }, delay);
-  }
+  };
 
-  const value = { userState, userDispatch, alert, setAlert, showAlert, capitalize };
+  const value = {
+    userState,
+    userDispatch,
+    showAlert,
+    capitalize,
+  };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

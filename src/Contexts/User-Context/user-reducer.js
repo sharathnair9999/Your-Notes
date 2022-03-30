@@ -1,8 +1,16 @@
-const userData = JSON.parse(localStorage.getItem("authToken"));
+import { userToken } from "./user-utils";
+
+const userData = userToken();
+const initialAlertState = {
+  type: null,
+  message: null,
+  show: false,
+};
 const initialUserState = {
   encodedToken: userData ? userData.encodedToken : null,
   firstName: userData ? userData.firstName : null,
   lastName: userData ? userData.lastName : null,
+  alert: initialAlertState,
 };
 
 const testUser = {
@@ -28,9 +36,14 @@ const userReducer = (state, action) => {
         lastName: payload.lastName,
         password: payload.password,
       };
+    case "SHOW_ALERT":
+      return {
+        ...state,
+        alert: payload,
+      };
     default:
       return state;
   }
 };
 
-export { testUser, initialUserState, userReducer };
+export { testUser, initialUserState, userReducer, initialAlertState };

@@ -1,32 +1,31 @@
 @import url("/node_modules/mockman-js/dist/style.css");
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Josefin+Sans:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&family=Josefin+Sans:wght@300&display=swap");
 
-
-:root{
+:root {
   --text-white: #f8f9fa;
   --body-bg-full-dark: #22223b;
-  --body-bg-light-dark : #4a4e69;
+  --body-bg-light-dark: #4a4e69;
   --gray: #2d3142;
   --gray-2: #dee2e6;
   --cta-1: #e9ecef;
-  --font-fire-sans : 'Fira Sans', sans-serif;
-  --font-joesfin-sans : 'Josefin Sans', sans-serif;
-  
-}
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-
+  --font-fire-sans: "Fira Sans", sans-serif;
+  --font-joesfin-sans: "Josefin Sans", sans-serif;
+  --green: #40916c;
+  --yellow: #f9c74f;
+  --red: #9d0208;
 }
 
-body{
+body {
   background-color: var(--body-bg-full-dark);
   color: var(--text-white);
   font-family: var(--font-josefin-sans);
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
 }
 
-a{
+a {
   text-decoration: none;
   color: var(--text-white);
 }
@@ -36,11 +35,34 @@ a{
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--text-white); 
+  background: var(--text-white);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background: var(--body-bg-light-dark); 
+  background: var(--body-bg-light-dark);
+}
+
+.secondary-link {
+  color: var(--text-white);
+  border-radius: 5px;
+  font-weight: bolder;
+  font-size: 1rem;
+}
+
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.secondary-link:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+  .secondary-link {
+    font-size: 0.8rem;
+  }
 }

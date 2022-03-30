@@ -3,7 +3,7 @@
 }
 
 .landing-page-section {
-  margin: 3rem;
+  margin: 2rem 3rem;
   background-color: var(--body-bg-light-dark);
   height: 90vh;
   border-radius: 1rem;
@@ -15,10 +15,25 @@
   transition: all 0.3s ease;
 }
 
+
 .landing-page-section .site-name {
   font-size: 4rem;
   transition: all 0.2s ease;
   margin: auto auto 2rem 0;
+  animation: top-to-bottom 1s ease-in-out ;
+  position: absolute;
+  top: 4rem;
+}
+
+@keyframes top-to-bottom {
+  0%{
+    opacity: 0;
+    top: 0;
+  }
+  100%{
+    opacity: 1;
+    top: 4rem;
+  }
 }
 
 .site-name-1 {
@@ -29,12 +44,9 @@
   color: var(--all-white);
 }
 
-.landing-img {
-  max-width: 30rem;
-  min-width: 15rem;
-}
 .landing-img img {
   width: 100%;
+  animation: fadeIn 2s ease-in-out;
 }
 
 .landing-page-section .hero-text {
@@ -61,18 +73,12 @@
   transition: all 0.2s ease;
 }
 
-.sign-in {
-  color: var(--text-white);
-  border-radius: 5px;
-  font-weight: bolder;
-  font-size: 1rem;
-}
-
-.sign-in:hover {
-  text-decoration: underline;
-}
-
 @media screen and (max-width: 768px) {
+
+  .landing-page-section .site-name{
+   position: static;
+  }
+
   .landing-page-section {
     flex-wrap: wrap;
     height: 95vh;

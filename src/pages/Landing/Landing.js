@@ -24,7 +24,7 @@ const Landing = () => {
             </span>
             <span className="flex-and-center gap-1">
               <span>Already Have an Account?</span>
-              <Link to={"/login"} className="sign-in">
+              <Link to={"/login"} className="secondary-link">
                 Sign In
               </Link>
             </span>

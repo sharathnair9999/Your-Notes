@@ -1,7 +1,46 @@
 @import url("/node_modules/mockman-js/dist/style.css");
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Josefin+Sans:wght@300&display=swap');
 
+
+:root{
+  --text-white: #f8f9fa;
+  --body-bg-full-dark: #22223b;
+  --body-bg-light-dark : #4a4e69;
+  --gray: #2d3142;
+  --gray-2: #dee2e6;
+  --cta-1: #e9ecef;
+  --font-fire-sans : 'Fira Sans', sans-serif;
+  --font-joesfin-sans : 'Josefin Sans', sans-serif;
+  
+}
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+
+}
+
+body{
+  background-color: var(--body-bg-full-dark);
+  color: var(--text-white);
+  font-family: var(--font-josefin-sans);
+}
+
+a{
+  text-decoration: none;
+  color: var(--text-white);
+}
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--text-white); 
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: var(--body-bg-light-dark); 
 }

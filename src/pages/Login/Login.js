@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import { constants } from "../../constants";
 import { Link } from "react-router-dom";
+import { Password, useDetails } from "../../imports/imports";
+import { initialCredentialState } from "../Signup/signup-utils";
 
 const Login = () => {
+  const [credentials, setCredentials] = useState(initialCredentialState);
+
+  const { loginUser, testUser } = useDetails();
+
+  const onChange = (e) => {
+    setCredentials((credentials) => ({
+      ...credentials,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleLogin = (e, details) => {
+     loginUser(e, details);
+  };
+
   return (
     <div className="login-page">
       <div className="login-page-section">
@@ -14,7 +31,10 @@ const Login = () => {
             className="responsive-img"
           />
         </div>
-        <form className="login-form">
+        <form
+          className="login-form"
+          onSubmit={(e) => handleLogin(e, credentials)}
+        >
           <h1 className="flex-and-center gap-1">
             <span>Login</span>
             <img
@@ -27,17 +47,22 @@ const Login = () => {
             <fieldset>
               <legend>Email</legend>
               <input
-                type="text"
+                type="email"
                 placeholder="john@doe.com"
                 className="input-box"
+                required
+                autoFocus
+                name="email"
+                value={credentials.email}
+                onChange={onChange}
               />
             </fieldset>
             <fieldset>
               <legend>Password</legend>
-              <input
-                type="password"
-                placeholder="*******"
-                className="input-box"
+              <Password
+                fieldName={"password"}
+                fieldValue={credentials.password}
+                onChange={onChange}
               />
             </fieldset>
             <section className="remember-me my-1">
@@ -46,6 +71,18 @@ const Login = () => {
             </section>
             <button className="log-in-btn flex-and-center gap-sm mb-1">
               <span>Log In</span>
+              <i className="fa-solid fa-arrow-right-to-bracket"></i>
+            </button>
+            <button
+              className="log-in-btn flex-and-center gap-sm mb-1"
+              onClick={(e) => {
+                loginUser(e, testUser);
+                setTimeout(() => {
+                  setCredentials(testUser);
+                }, 500);
+              }}
+            >
+              <span>Log as Test User</span>
               <i className="fa-solid fa-arrow-right-to-bracket"></i>
             </button>
             <p className="flex justify-fs items-center gap-sm my-1">

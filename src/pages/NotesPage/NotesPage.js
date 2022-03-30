@@ -1,8 +1,11 @@
 import React from 'react'
+import "./NotesPage.css"
 
 const NotesPage = () => {
   return (
-    <div>NotesPage</div>
+    <div className='notes-page-section'>
+      NotesPage
+    </div>
   )
 }
 

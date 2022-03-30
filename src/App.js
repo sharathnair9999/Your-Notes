@@ -1,19 +1,50 @@
-import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { Alert, ErrorPage, Footer, Landing, Login, NotesPage, ResetPassword, Signup } from "./imports/imports";
+import {
+  Alert,
+  ErrorPage,
+  Footer,
+  Landing,
+  Login,
+  NotesPage,
+  ResetPassword,
+  Signup,
+  UserAvatar,
+} from "./imports/imports";
 import Mockman from "mockman-js";
+import { RedirectLoggedUser, RequireAuth } from "./Contexts/User-Context/user-context";
 
 function App() {
-
   return (
     <div className="App">
-      <Alert/>
+      <UserAvatar />
+      <Alert />
       <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="login" element={<Login/>}/>
-        <Route path="signup" element={<Signup/>}/>
-        <Route path="reset-password" element={<ResetPassword/>}/>
-        <Route path="notes" element={<NotesPage />} />
+        <Route
+          path="/"
+          element={
+            <RedirectLoggedUser>
+              <Landing />
+            </RedirectLoggedUser>
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <RedirectLoggedUser>
+              <Login />
+            </RedirectLoggedUser>
+          }
+        />
+        <Route path="signup" element={<Signup />} />
+        <Route path="reset-password" element={<ResetPassword />} />
+        <Route
+          path="notes"
+          element={
+            <RequireAuth>
+              <NotesPage />
+            </RequireAuth>
+          }
+        />
         <Route path="mockapi" element={<Mockman />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>

@@ -1,45 +1,24 @@
 import React from "react";
 import "./Signup.css";
-import { validPassword, initialCredentialState } from "./signup-utils";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { initialCredentialState } from "./signup-utils";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   useDetails,
   constants,
-  capitalize,
   Password,
 } from "../../imports/imports";
 
 const Signup = () => {
   const [credentials, setCredentials] = useState(initialCredentialState);
   const [accept, setAccept] = useState(false);
-  const { showAlert } = useDetails();
+  const {signUpUser, userState } = useDetails();
+  const navigate = useNavigate();
 
-  const handleSignup = async (e) => {
-    e.preventDefault();
-    if (!accept) {
-      showAlert("error", "Please Accept the Terms & Conditions.", 1500);
-      return;
-    }
-    if (credentials.password !== credentials.confirmPassword) {
-      showAlert("error", "Password doesn't match", 1500);
-      return;
-    }
-    if (!validPassword(credentials.password)) {
-      showAlert(
-        "error",
-        "Password must contain atleast 8 characters, 1 UpperCase, 1 LowerCase and a Special Character",
-        3000
-      );
-      return;
-    }
+  useEffect(() => {
+    userState.encodedToken && navigate(-1);
+  }, [navigate, userState.encodedToken]);
 
-    showAlert(
-      "success",
-      `Welcome to Your Notes Family,  ${capitalize(credentials.firstName)}`,
-      3000
-    );
-  };
 
   const onChange = (e) => {
     setCredentials((credentials) => ({
@@ -58,7 +37,10 @@ const Signup = () => {
             className="responsive-img"
           />
         </div>
-        <form className="signup-form" onSubmit={handleSignup}>
+        <form
+          className="signup-form"
+          onSubmit={(e) => signUpUser(e, credentials, accept)}
+        >
           <h1 className="flex-and-center gap-1">
             <span>Sign Up</span>{" "}
             <img

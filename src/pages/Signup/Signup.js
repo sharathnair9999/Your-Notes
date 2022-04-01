@@ -87,7 +87,7 @@ const Signup = () => {
             <fieldset>
               <legend>Password</legend>
               <Password
-                title="Password must contain atleast 8 characters, 1 UpperCase, 1 LowerCase and a Special Character"
+                title="Password must contain atleast 8 characters, 1 UpperCase, 1 LowerCase and a Special Character."
                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$"
                 fieldValue={credentials.password}
                 fieldName={"password"}

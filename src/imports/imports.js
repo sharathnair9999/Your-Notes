@@ -18,7 +18,8 @@ import UserAvatar from "../components/UserAvatar/UserAvatar";
 import LabelPage from '../components/Trashpage/TrashPage';
 import TrashPage from "../components/Trashpage/TrashPage";
 import ArchivesPage from "../components/ArchivesPage/ArchivesPage"
-import NotesSection from '../components/NotesSection/NotesSection'
+import NotesSection from '../components/NotesSection/NotesSection';
+import { callApi } from "../app-utils/app-utils";
 
 export {
   Alert,
@@ -41,5 +42,6 @@ export {
   LabelPage,
   ArchivesPage,
   TrashPage,
-  NotesSection
+  NotesSection,
+  callApi
 };

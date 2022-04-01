@@ -97,8 +97,23 @@
 @media screen and (max-width: 768px) {
   .login-page-section {
     height: 90vh;
-    margin: 2rem;
+    margin: 1rem;
     padding: 1rem;
+  }
+  .log-in-btn span{
+    font-size: 0.9rem;
+  }
+
+  .inputs-container fieldset{
+    padding: 0;
+  }
+
+  .inputs-container  .input-box{
+    font-size:1rem;
+  }
+
+  .inputs-container .show-icon{
+    padding-right: 10px;
   }
 
   .login-form h1 {

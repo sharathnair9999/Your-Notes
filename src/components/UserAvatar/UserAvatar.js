@@ -2,8 +2,11 @@ import React from "react";
 import { useDetails } from "../../imports/imports";
 import "./UserAvatar.css";
 import { useNavigate } from "react-router-dom";
+import useComponentVisible from "../useComponentVisible";
 
 const UserAvatar = () => {
+  const { ref, isComponentVisible, setIsComponentVisible } =
+    useComponentVisible(false);
   const navigate = useNavigate();
   const { userState, logoutUser } = useDetails();
   const firstInitial =
@@ -12,6 +15,7 @@ const UserAvatar = () => {
     userState?.lastName && userState.lastName[0].toUpperCase();
   return (
     <div
+      ref={ref}
       className={`user-avatar ${
         userState.encodedToken ? "show-avatar" : "hide-avatar"
       } `}
@@ -19,10 +23,7 @@ const UserAvatar = () => {
       {userState.encodedToken && (
         <span
           onClick={() => {
-            setTimeout(() => {
-              logoutUser();
-              navigate("/login");
-            }, 500);
+            setIsComponentVisible(!isComponentVisible);
           }}
           className="user-avatar-container"
         >
@@ -33,6 +34,25 @@ const UserAvatar = () => {
             <span>{firstInitial}</span>
             <span>{lastInitial}</span>
           </span>
+
+          <div
+            className={`user-options ${
+              !isComponentVisible ? "show-options" : "hide-options"
+            }`}
+          >
+            <span>My Profile</span>
+            <span
+              onClick={() => {
+                setTimeout(() => {
+                  logoutUser();
+                  navigate("/login");
+                }, 500);
+              }}
+              className="logout-btn"
+            >
+              Logout
+            </span>
+          </div>
         </span>
       )}
     </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Password = ({ fieldName, fieldValue, onChange }) => {
+const Password = ({ fieldName, fieldValue, onChange, ...other }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -13,6 +13,7 @@ const Password = ({ fieldName, fieldValue, onChange }) => {
         onChange={onChange}
         name={fieldName}
         required
+        {...other}
       />
       <span
         onClick={() => setShowPassword(!showPassword)}

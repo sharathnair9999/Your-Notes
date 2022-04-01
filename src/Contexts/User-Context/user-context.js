@@ -7,7 +7,7 @@ import {
   testUser,
 } from "./user-reducer";
 import { Navigate } from "react-router-dom";
-import { capitalize, validPassword } from "./user-utils";
+import { capitalize } from "./user-utils";
 const UserContext = createContext(initialUserState);
 
 const UserProvider = ({ children }) => {
@@ -51,20 +51,12 @@ const UserProvider = ({ children }) => {
   };
   const signUpUser = async (e, details, accept) => {
     e.preventDefault();
-    if (!accept) {
-      showAlert("error", "Please Accept the Terms & Conditions.", 1500);
-      return;
-    }
     if (details.password !== details.confirmPassword) {
       showAlert("error", "Password doesn't match", 1500);
       return;
     }
-    if (!validPassword(details.password)) {
-      showAlert(
-        "error",
-        "Password must contain atleast 8 characters, 1 UpperCase, 1 LowerCase and a Special Character",
-        3000
-      );
+    if (!accept) {
+      showAlert("error", "Please Accept the Terms & Conditions.", 1500);
       return;
     }
 
@@ -78,7 +70,7 @@ const UserProvider = ({ children }) => {
         3000
       );
     } catch (error) {
-      showAlert("error", `Couldn't Create Your Profile at this moment!`, 3000);
+      showAlert("error", `User Profile already exists!`, 3000);
     }
   };
   

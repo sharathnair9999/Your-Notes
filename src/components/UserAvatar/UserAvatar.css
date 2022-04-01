@@ -1,12 +1,11 @@
-.user-avatar{
+.user-avatar {
   position: fixed;
   right: 2rem;
   top: 1rem;
   z-index: 100;
-
 }
 
-.user-avatar-container{
+.user-avatar-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,19 +17,101 @@
   border-radius: 50%;
   height: 4rem;
   width: 4rem;
+  position: relative;
 }
 
-.user-avatar-container .avatar-icon{
+.user-avatar-container .avatar-icon {
   color: var(--body-bg-light-dark);
   padding-top: 1rem;
   font-size: 2.1rem;
 }
 
-.user-avatar-container .name{
+.user-avatar-container .name {
   color: var(--body-bg-light-dark);
-
+  gap: 2px;
 }
 
-.user-avatar-container .name{
-  gap: 2px;
+.user-options {
+  display: none;
+}
+
+.show-options {
+  display: block;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(100%);
+}
+
+.hide-options {
+  display: none;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-100%);
+}
+
+.user-options {
+  display: block;
+  position: absolute;
+  top: 4.5rem;
+  background-color: var(--cta-1);
+  padding: 4px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  left: 4.7rem;
+  border-radius: 5px;
+  max-width: 20rem;
+  min-width: 5rem;
+  width: 100%;
+}
+
+.user-options span {
+  list-style: none;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--black);
+  width: 100%;
+  padding: 0 4px;
+  border-radius: 4px;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.user-options span:hover{
+  transition: all 0.2s ease-in-out;
+  background-color: var(--body-bg-light-dark);
+  color: var(--white-100);
+}
+
+@media screen and (max-width: 768px) {
+  .user-avatar-container {
+    width: 2.5rem;
+    height: 2.5rem;
+    gap: 0px;
+    padding: 0;
+  }
+
+  .user-avatar-container .avatar-icon {
+    font-size: 1.1rem;
+  }
+  .user-avatar-container .name {
+    font-size: 0.7rem;
+  }
+
+  .user-avatar {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    z-index: 100;
+  }
+
+  .user-options {
+    left: 2.7rem;
+    top: 2.8rem;
+    min-width: 3rem;
+    gap: 5px;
+  }
+  .user-options span {
+    font-size: 10px;
+    width: 100%;
+  }
 }

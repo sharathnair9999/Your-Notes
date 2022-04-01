@@ -3,22 +3,17 @@ import "./Signup.css";
 import { initialCredentialState } from "./signup-utils";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  useDetails,
-  constants,
-  Password,
-} from "../../imports/imports";
+import { useDetails, constants, Password } from "../../imports/imports";
 
 const Signup = () => {
   const [credentials, setCredentials] = useState(initialCredentialState);
   const [accept, setAccept] = useState(false);
-  const {signUpUser, userState } = useDetails();
+  const { signUpUser, userState } = useDetails();
   const navigate = useNavigate();
 
   useEffect(() => {
     userState.encodedToken && navigate(-1);
   }, [navigate, userState.encodedToken]);
-
 
   const onChange = (e) => {
     setCredentials((credentials) => ({
@@ -39,8 +34,9 @@ const Signup = () => {
         </div>
         <form
           className="signup-form"
-          onSubmit={(e) => {signUpUser(e, credentials, accept) 
-          navigate("/login")}}
+          onSubmit={async (e) => {
+           await signUpUser(e, credentials, accept);
+          }}
         >
           <h1 className="flex-and-center gap-1">
             <span>Sign Up</span>{" "}
@@ -91,6 +87,8 @@ const Signup = () => {
             <fieldset>
               <legend>Password</legend>
               <Password
+                title="Password must contain atleast 8 characters, 1 UpperCase, 1 LowerCase and a Special Character"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$"
                 fieldValue={credentials.password}
                 fieldName={"password"}
                 onChange={onChange}

@@ -1,17 +1,24 @@
 import { Routes, Route } from "react-router-dom";
 import {
   Alert,
+  ArchivesPage,
   ErrorPage,
   Footer,
+  LabelPage,
   Landing,
   Login,
   NotesPage,
+  NotesSection,
   ResetPassword,
   Signup,
+  TrashPage,
   UserAvatar,
 } from "./imports/imports";
 import Mockman from "mockman-js";
-import { RedirectLoggedUser, RequireAuth } from "./Contexts/User-Context/user-context";
+import {
+  RedirectLoggedUser,
+  RequireAuth,
+} from "./Contexts/User-Context/user-context";
 
 function App() {
   return (
@@ -44,7 +51,21 @@ function App() {
               <NotesPage />
             </RequireAuth>
           }
-        />
+        >
+          <Route index element={<h1>Toggle</h1>} />
+          <Route path="all-notes" element={<NotesSection />} />
+          <Route path="label" element={<LabelPage />} />
+          <Route path="archive" element={<ArchivesPage />} />
+          <Route path="trash" element={<TrashPage />} />
+          <Route
+            path="*"
+            element={
+              <main>
+                <h1>Error page</h1>
+              </main>
+            }
+          />
+        </Route>
         <Route path="mockapi" element={<Mockman />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>

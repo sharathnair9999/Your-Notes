@@ -1,4 +1,4 @@
-.notes-page-section{
+.notes-page-section {
   background-color: var(--body-bg-light-dark);
   margin: 2rem 3rem;
   padding: 1rem 2rem;
@@ -10,10 +10,27 @@
   flex-wrap: wrap;
 }
 
-
-@media screen and (max-width:768px){
-  .notes-page-section{
+@media screen and (max-width: 768px) {
+  .notes-page-section {
     margin: 1rem;
     padding: 1rem;
   }
+}
+
+.active-link {
+  background-color: var(--text-white);
+  color: var(--body-bg-full-dark);
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.active-link:hover {
+  filter: brightness(95%);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.inactive-link{
+  background-color: var(--body-bg-light-dark);
+  color: var(--text-white);
 }

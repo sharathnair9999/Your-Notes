@@ -15,7 +15,10 @@ import { useDetails } from "../Contexts/User-Context/user-context";
 import { capitalize } from "../Contexts/User-Context/user-utils";
 import Password from "../components/Password/Password";
 import UserAvatar from "../components/UserAvatar/UserAvatar";
-
+import LabelPage from '../components/Trashpage/TrashPage';
+import TrashPage from "../components/Trashpage/TrashPage";
+import ArchivesPage from "../components/ArchivesPage/ArchivesPage"
+import NotesSection from '../components/NotesSection/NotesSection'
 
 export {
   Alert,
@@ -34,5 +37,9 @@ export {
   useDetails,
   capitalize,
   Password,
-  UserAvatar
+  UserAvatar,
+  LabelPage,
+  ArchivesPage,
+  TrashPage,
+  NotesSection
 };

@@ -78,7 +78,7 @@ const UserProvider = ({ children }) => {
         3000
       );
     } catch (error) {
-      showAlert("error", `Couldn't Create Your Profile at this moment!`, 3000);
+      showAlert("error", `User Profile already exists!`, 3000);
     }
   };
   

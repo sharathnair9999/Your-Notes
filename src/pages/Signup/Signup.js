@@ -39,7 +39,8 @@ const Signup = () => {
         </div>
         <form
           className="signup-form"
-          onSubmit={(e) => signUpUser(e, credentials, accept)}
+          onSubmit={(e) => {signUpUser(e, credentials, accept) 
+          navigate("/login")}}
         >
           <h1 className="flex-and-center gap-1">
             <span>Sign Up</span>{" "}

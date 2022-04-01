@@ -4,7 +4,7 @@ import {
   ArchivesPage,
   ErrorPage,
   Footer,
-  LabelPage,
+  LabelsPage,
   Landing,
   Login,
   NotesPage,
@@ -54,7 +54,7 @@ function App() {
         >
           <Route index element={<h1>Toggle</h1>} />
           <Route path="all-notes" element={<NotesSection />} />
-          <Route path="label" element={<LabelPage />} />
+          <Route path="label" element={<LabelsPage />} />
           <Route path="archive" element={<ArchivesPage />} />
           <Route path="trash" element={<TrashPage />} />
           <Route

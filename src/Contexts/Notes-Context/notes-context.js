@@ -24,8 +24,8 @@ const NoteProvider = ({ children }) => {
     }
   };
 
-  const addNewNote = async (title, description, tags) => {
-    const note = { title, description, tags };
+  const addNewNote = async (title, description, tags, styles) => {
+    const note = { title, description, tags, styles };
     try {
       const { data } = await callApi("POST", encodedToken, "/api/notes", {
         note,

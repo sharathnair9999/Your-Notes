@@ -1,7 +1,7 @@
 import React from "react";
 import { useDetails } from "../../imports/imports";
 import "./UserAvatar.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useComponentVisible from "../useComponentVisible";
 
 const UserAvatar = () => {
@@ -40,7 +40,9 @@ const UserAvatar = () => {
               !isComponentVisible ? "show-options" : "hide-options"
             }`}
           >
-            <span>My Profile</span>
+            <span className="option">
+              <Link to={"#"}>My Profile</Link>
+            </span>
             <span
               onClick={() => {
                 setTimeout(() => {
@@ -48,7 +50,7 @@ const UserAvatar = () => {
                   navigate("/login");
                 }, 500);
               }}
-              className="logout-btn"
+              className="logout-btn option"
             >
               Logout
             </span>

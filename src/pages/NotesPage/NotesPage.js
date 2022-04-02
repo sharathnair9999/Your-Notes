@@ -5,15 +5,15 @@ import "./NotesPage.css";
 const NotesPage = () => {
   return (
     <div className="notes-page-section">
-      <nav>
-        <ul className="flex-and-center flex-col gap-sm p-sm">
+      <nav className="notes-nav-section">
+        <ul className="flex justify-fs items-center flex-col">
           <NavLink
             className={({ isActive }) =>
               isActive ? "active-link" : "inactive-link"
             }
             to={"all-notes"}
           >
-            Home
+            Notes
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -41,7 +41,7 @@ const NotesPage = () => {
           </NavLink>
         </ul>
       </nav>
-      <div>
+      <div className="notes-view">
         <Outlet />
       </div>
     </div>

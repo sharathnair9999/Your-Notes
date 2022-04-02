@@ -64,7 +64,7 @@
   width: 100%;
 }
 
-.user-options span {
+.user-options .option , .user-options a  {
   list-style: none;
   font-weight: 400;
   font-size: 0.9rem;
@@ -73,11 +73,11 @@
   padding: 0 4px;
   border-radius: 4px;
   text-align: center;
-  transition: all 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 }
 
-.user-options span:hover{
-  transition: all 0.2s ease-in-out;
+.user-options .option:hover ,  .user-options .option a:hover{
+  transition: background-color 0.2s ease-in-out;
   background-color: var(--body-bg-light-dark);
   color: var(--white-100);
 }

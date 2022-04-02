@@ -35,7 +35,7 @@ const Signup = () => {
         <form
           className="signup-form"
           onSubmit={async (e) => {
-           await signUpUser(e, credentials, accept);
+            await signUpUser(e, credentials, accept);
           }}
         >
           <h1 className="flex-and-center gap-1">

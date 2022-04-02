@@ -20,6 +20,7 @@ import TrashPage from "../components/Trashpage/TrashPage";
 import ArchivesPage from "../components/ArchivesPage/ArchivesPage"
 import NotesSection from '../components/NotesSection/NotesSection';
 import { callApi } from "../app-utils/app-utils";
+import LabelsPage from "../components/LabelsPage/LabelsPage";
 
 export {
   Alert,
@@ -43,5 +44,6 @@ export {
   ArchivesPage,
   TrashPage,
   NotesSection,
-  callApi
+  callApi,
+  LabelsPage
 };

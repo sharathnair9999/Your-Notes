@@ -9,7 +9,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import NavBar from "../components/NavBar/NavBar";
 import Footer from "../components/Footer/Footer";
 import NoteCard from "../components/NoteCard/NoteCard";
-import { constants } from "../constants";
+import { constants } from "../app-utils/constants";
 import Alert from '../components/Alert/Alert'
 import { useDetails } from "../Contexts/User-Context/user-context";
 import { capitalize } from "../Contexts/User-Context/user-utils";
@@ -21,6 +21,7 @@ import ArchivesPage from "../components/ArchivesPage/ArchivesPage"
 import NotesSection from '../components/NotesSection/NotesSection';
 import { callApi } from "../app-utils/app-utils";
 import LabelsPage from "../components/LabelsPage/LabelsPage";
+import NotesLanding from "../components/NotesLanding/NotesLanding";
 
 export {
   Alert,
@@ -45,5 +46,6 @@ export {
   TrashPage,
   NotesSection,
   callApi,
-  LabelsPage
+  LabelsPage,
+  NotesLanding
 };

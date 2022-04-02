@@ -26,16 +26,22 @@
 }
 
 .active-link:hover {
-  filter: brightness(95%);
-  transition: background-color 0.3s ease-in-out;
+  background-color: var(--all-white);
+  color: var(--black);
+  transition: all 0.3s ease-in-out;
 }
 
-.inactive-link{
+.inactive-link {
   background-color: var(--body-bg-light-dark);
   color: var(--text-white);
 }
 
-.notes-nav-section{
+.inactive-link:hover {
+  background-color: var(--body-bg-full-dark);
+  color: var(--text-white);
+}
+
+.notes-nav-section {
   width: 15rem;
   display: flex;
   justify-content: flex-start;
@@ -44,12 +50,12 @@
   height: 100%;
 }
 
-.notes-nav-section > ul > *{
+.notes-nav-section > ul > * {
   width: 100%;
   padding: 10px 20px;
   margin: 1rem;
 }
 
-.notes-view{
+.notes-view {
   flex-grow: 1;
 }

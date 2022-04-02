@@ -1,0 +1,18 @@
+.img-container{
+  box-shadow: 7px 3px 8px 8px var(--body-bg-full-dark);
+  border-radius: 10px;
+  max-width: 600px;
+}
+
+.notes-landing-text{
+  font-size: 2rem;
+}
+
+.notes-landing-text .highlight{
+  color: var(--body-bg-full-dark);
+  background-color: var(--text-white);
+  padding: 3px 6px;
+  border-radius: 4px;
+
+  font-weight: bold;
+}

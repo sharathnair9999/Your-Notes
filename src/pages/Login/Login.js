@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { constants } from "../../constants";
 import { Link } from "react-router-dom";
-import { Password, useDetails } from "../../imports/imports";
+import { Password, useDetails, constants } from "../../imports/imports";
 import { initialCredentialState } from "../Signup/signup-utils";
 
 const Login = () => {

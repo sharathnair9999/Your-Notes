@@ -11,11 +11,6 @@
   max-width: 500px;
 }
 
-@media screen and (max-width:768px) {
-  
-  
-}
-
 .empty-data-section img{
   max-width: 150px;
   width: 100%;

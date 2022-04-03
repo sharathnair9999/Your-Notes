@@ -8,7 +8,6 @@ import NotesPage from "../pages/NotesPage/NotesPage";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import NavBar from "../components/NavBar/NavBar";
 import Footer from "../components/Footer/Footer";
-import NoteCard from "../components/NoteCard/NoteCard";
 import { constants } from "../app-utils/constants";
 import Alert from "../components/Alert/Alert";
 import { useDetails } from "../Contexts/User-Context/user-context";
@@ -19,12 +18,13 @@ import LabelPage from "../components/Trashpage/TrashPage";
 import TrashPage from "../components/Trashpage/TrashPage";
 import ArchivesPage from "../components/ArchivesPage/ArchivesPage";
 import NotesSection from "../components/NotesSection/NotesSection";
-import { callApi } from "../app-utils/app-utils";
+import { callApi, extractContent } from "../app-utils/app-utils";
 import LabelsPage from "../components/LabelsPage/LabelsPage";
 import NotesLanding from "../components/NotesLanding/NotesLanding";
 import MainSearchBar from "../components/MainSearchBar/MainSearchBar";
 import { useNotes } from "../Contexts/Notes-Context/notes-context";
 import EmptyData from "../components/EmptyData/EmptyData";
+import RichTextEditor from "../components/RichTextEditor/RichTextEditor";
 
 export {
   Alert,
@@ -38,7 +38,6 @@ export {
   ErrorPage,
   NavBar,
   Footer,
-  NoteCard,
   constants,
   useDetails,
   capitalize,
@@ -49,9 +48,11 @@ export {
   TrashPage,
   NotesSection,
   callApi,
+  extractContent,
   LabelsPage,
   NotesLanding,
   MainSearchBar,
   useNotes,
   EmptyData,
+  RichTextEditor
 };

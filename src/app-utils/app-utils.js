@@ -8,3 +8,8 @@ export const callApi = (method, token, url, body) => {
     headers: { authorization: token },
   });
 };
+
+export const extractContent = (html) =>
+  new DOMParser().parseFromString(html, "text/html").documentElement
+    .textContent;
+

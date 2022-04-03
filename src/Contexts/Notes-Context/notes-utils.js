@@ -1,7 +1,7 @@
 export const initialNoteState = {
   allNotes: [],
   archivedNotes: [],
-  totalNotes: [],
+  trashNotes: [],
 };
 
 export const notesReducer = (state, action) => {
@@ -12,18 +12,13 @@ export const notesReducer = (state, action) => {
         ...state,
         allNotes: payload,
       };
-    case "ADD_NEW_NOTE":
-      return {
-        ...state,
-        allNotes: payload,
-      };
     case "UPDATE_NOTE":
       return {
         ...state,
         allNotes: payload,
       };
     case "DELETE_NOTE":
-      return { ...state, allNotes: payload };
+      return { ...state, trashNotes: [...state.trashNotes, payload] };
     case "GET_ARCHIVED_NOTES":
       return {
         ...state,

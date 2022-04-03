@@ -42,7 +42,7 @@ a {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background: var(--body-bg-light-dark);
+  background: var(--body-bg-full-dark);
 }
 
 .secondary-link {

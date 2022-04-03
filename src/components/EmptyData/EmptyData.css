@@ -1,0 +1,19 @@
+.empty-data-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+.empty-data-section h3{
+  max-width: 500px;
+}
+
+.empty-data-section img{
+  max-width: 150px;
+  width: 100%;
+  height: auto;
+}
+

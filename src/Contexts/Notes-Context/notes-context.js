@@ -24,8 +24,8 @@ const NoteProvider = ({ children }) => {
     }
   };
 
-  const addNewNote = async (title, description, tags) => {
-    const note = { title, description, tags };
+  const addNewNote = async (title, description, tags, bgColor, isPinned) => {
+    const note = { title, description, tags, bgColor, isPinned };
     try {
       const { data } = await callApi("POST", encodedToken, "/api/notes", {
         note,
@@ -38,8 +38,8 @@ const NoteProvider = ({ children }) => {
     }
   };
 
-  const updateNote = async (title, description, tags, id) => {
-    const note = { title, description, tags };
+  const updateNote = async (title, description, tags, id, isPinned, bgColor) => {
+    const note = { title, description, tags, isPinned, bgColor };
     try {
       const { data } = await callApi("POST", encodedToken, `/api/notes/${id}`, {
         note,

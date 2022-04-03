@@ -24,13 +24,30 @@ const NoteProvider = ({ children }) => {
     }
   };
 
-  const addNewNote = async (title, description, tags, bgColor, isPinned) => {
-    const note = { title, description, tags, bgColor, isPinned };
+  const addNewNote = async (
+    title,
+    description,
+    tags,
+    bgColor,
+    isPinned,
+    createdDate,
+    createdTime
+  ) => {
+    const note = {
+      title,
+      description,
+      tags,
+      bgColor,
+      isPinned,
+      createdDate,
+      createdTime,
+    };
     try {
       const { data } = await callApi("POST", encodedToken, "/api/notes", {
         note,
       });
       const { notes } = data;
+      console.log(notes);
       notesDispatch({ type: "ADD_NEW_NOTE", payload: notes });
       showAlert("success", "Successfully Added Note :)", 1500);
     } catch (error) {
@@ -38,8 +55,25 @@ const NoteProvider = ({ children }) => {
     }
   };
 
-  const updateNote = async (title, description, tags, id, isPinned, bgColor) => {
-    const note = { title, description, tags, isPinned, bgColor };
+  const updateNote = async (
+    title,
+    description,
+    tags,
+    id,
+    isPinned,
+    bgColor,
+    createdDate,
+    createdTime
+  ) => {
+    const note = {
+      title,
+      description,
+      tags,
+      isPinned,
+      bgColor,
+      createdDate,
+      createdTime,
+    };
     try {
       const { data } = await callApi("POST", encodedToken, `/api/notes/${id}`, {
         note,

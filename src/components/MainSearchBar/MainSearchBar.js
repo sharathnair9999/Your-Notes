@@ -1,20 +1,14 @@
 import React from "react";
 import "./MainSearchBar.css";
 
-const MainSearchBar = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("submit");
-  };
+const MainSearchBar = ({ searchInput, setSearchInput }) => {
   return (
     <div className="search-container">
-      <form
-        onSubmit={handleSubmit}
-        className="flex justify-space-btw items-center"
-      >
+      <div className="flex justify-space-btw items-center">
         <input
-          type="search"
+          onChange={(e) => setSearchInput(e.target.value)}
           name="search-field"
+          value={searchInput}
           id="search-field"
           className="search-input"
           placeholder="Search with Title, Tags, Description..."
@@ -22,7 +16,7 @@ const MainSearchBar = () => {
         <button type="submit" id="submit-btn">
           <i className="fa-solid fa-magnifying-glass"></i>
         </button>
-      </form>
+      </div>
     </div>
   );
 };

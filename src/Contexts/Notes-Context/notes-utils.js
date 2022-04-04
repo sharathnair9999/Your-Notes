@@ -2,6 +2,7 @@ export const initialNoteState = {
   allNotes: [],
   archivedNotes: [],
   trashNotes: [],
+  labels:[]
 };
 
 export const notesReducer = (state, action) => {

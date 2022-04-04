@@ -13,3 +13,12 @@ export const extractContent = (html) =>
   new DOMParser().parseFromString(html, "text/html").documentElement
     .textContent;
 
+export const dateAndTime = () => {
+  // get the date as a string
+  const date = new Date();
+  const currentDate = date.toDateString();
+  // get the time as a string
+  const currentTime = date.toLocaleTimeString();
+
+  return { currentDate, currentTime };
+};

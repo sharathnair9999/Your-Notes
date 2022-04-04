@@ -7,6 +7,7 @@ import { AiTwotoneEdit, AiTwotoneDelete, AiTwotoneSave } from "react-icons/ai";
 import { formats, modules, newNoteState } from "./utils";
 import { useDetails, useNotes, extractContent } from "../../imports/imports";
 import ReactTooltip from "react-tooltip";
+import { dateAndTime } from "../../app-utils/app-utils";
 
 const RichTextEditor = ({
   editNote,
@@ -18,8 +19,15 @@ const RichTextEditor = ({
   existingNote,
   note,
   setCreateNote,
+  inArchives,
 }) => {
-  const { addNewNote, updateNote, deleteNote, addNoteToArchives } = useNotes();
+  const {
+    addNewNote,
+    updateNote,
+    deleteNote,
+    addNoteToArchives,
+    restoreNoteFromArchives,
+  } = useNotes();
   const { showAlert } = useDetails();
   const currentNoteState = existingNote ? note : newNoteState;
   const [noteState, setNoteState] = useState(currentNoteState);
@@ -32,6 +40,13 @@ const RichTextEditor = ({
       ? (noteTextRef.current.style.backgroundColor = noteState.bgColor)
       : (noteTextRef.current.style.backgroundColor = "#dedfe8");
     if (!noteState.description || !noteTextRef.current) return;
+
+    const { currentDate, currentTime } = dateAndTime();
+    setNoteState((state) => ({
+      ...state,
+      createdDate: currentDate,
+      createdTime: currentTime,
+    }));
   }, [noteState.bgColor, noteState.description, noteTextRef]);
 
   useEffect(() => {
@@ -49,7 +64,9 @@ const RichTextEditor = ({
       noteState.description,
       noteState.tags,
       noteState.bgColor,
-      noteState.isPinned
+      noteState.isPinned,
+      noteState.createdDate,
+      noteState.createdTime
     );
     setEdit(false);
     newNote && setCreateNote((state) => !state);
@@ -66,7 +83,9 @@ const RichTextEditor = ({
       noteState.tags,
       noteState._id,
       noteState.isPinned,
-      noteState.bgColor
+      noteState.bgColor,
+      noteState.createdDate,
+      noteState.createdTime
     );
     setEdit(false);
   };
@@ -82,7 +101,7 @@ const RichTextEditor = ({
       "#d8b4fe",
       "#fda4af",
       "#f8fafc",
-      "#fdba74"
+      "#fdba74",
     ];
     var randomColor = colorArray[Math.floor(Math.random() * colorArray.length)];
     setNoteState((state) => ({ ...state, bgColor: randomColor }));
@@ -105,6 +124,7 @@ const RichTextEditor = ({
       <div className="input-container flex justify-space-btw items-center">
         {edit && (
           <input
+            autoFocus={edit}
             type="text"
             className="note-title w-100"
             placeholder="Title"
@@ -148,7 +168,6 @@ const RichTextEditor = ({
           value={noteState.description}
           onChange={(value) => {
             setNoteState((state) => ({ ...state, description: value }));
-            console.log(noteState.description);
           }}
           theme="snow"
           modules={modules}
@@ -167,6 +186,13 @@ const RichTextEditor = ({
             </button>
           )}
         </div>
+        {!edit && (
+          <div className="middle-section flex justify-fs items-fs flex-col mr-auto">
+            <p>{noteState.createdDate}</p>
+            <p>{noteState.createdTime}</p>
+          </div>
+        )}
+
         <div className="right-btns flex-and-center gap-sm ">
           {edit ? (
             <button
@@ -194,10 +220,18 @@ const RichTextEditor = ({
               <AiTwotoneEdit size={"1.1rem"} />
             </button>
           )}
-          {!disableArchive && (
+          {!disableArchive && !inArchives && (
             <button
               onClick={() => addNoteToArchives(currentNoteState._id)}
-              data-tip="Archive"
+              data-tip="Add to Archives"
+            >
+              <BsArchiveFill size={"1.1rem"} />
+            </button>
+          )}
+          {inArchives && (
+            <button
+              onClick={() => restoreNoteFromArchives(currentNoteState._id)}
+              data-tip="Remove From Archives"
             >
               <BsArchiveFill size={"1.1rem"} />
             </button>

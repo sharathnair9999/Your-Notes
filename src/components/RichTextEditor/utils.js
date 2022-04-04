@@ -34,4 +34,6 @@ export const newNoteState = {
   tags: [],
   bgColor: "#dedfe8",
   isPinned: false,
+  createdDate :"",
+  createdTime :""
 };

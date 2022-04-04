@@ -63,7 +63,7 @@ const UserProvider = ({ children }) => {
     try {
       const { data } = await axios.post("/api/auth/signup", details);
       const { createdUser } = data;
-      const {  firstName } = createdUser;
+      const { firstName } = createdUser;
       showAlert(
         "success",
         `Welcome to Your Notes Family,  ${capitalize(firstName)}`,
@@ -73,16 +73,11 @@ const UserProvider = ({ children }) => {
       showAlert("error", `User Profile already exists!`, 3000);
     }
   };
-  
+
   const logoutUser = () => {
     userDispatch({ type: "LOGOUT" });
-    showAlert(
-      "success",
-      "You are logged out successfully",
-      2000
-    );
+    showAlert("success", "You are logged out successfully", 2000);
     localStorage.removeItem("authToken");
-
   };
 
   const value = {
@@ -93,7 +88,7 @@ const UserProvider = ({ children }) => {
     loginUser,
     testUser,
     logoutUser,
-    signUpUser
+    signUpUser,
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

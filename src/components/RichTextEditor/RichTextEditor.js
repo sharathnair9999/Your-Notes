@@ -4,6 +4,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { BsPinAngle, BsPinAngleFill, BsArchiveFill } from "react-icons/bs";
 import { AiTwotoneEdit, AiTwotoneDelete, AiTwotoneSave } from "react-icons/ai";
+import { FaTrashRestore } from "react-icons/fa";
 import { formats, modules, newNoteState } from "./utils";
 import { useDetails, useNotes, extractContent } from "../../imports/imports";
 import ReactTooltip from "react-tooltip";
@@ -20,6 +21,9 @@ const RichTextEditor = ({
   note,
   setCreateNote,
   inArchives,
+  canRestore,
+  canAddToArchive,
+  cannotEdit,
 }) => {
   const {
     addNewNote,
@@ -27,6 +31,8 @@ const RichTextEditor = ({
     deleteNote,
     addNoteToArchives,
     restoreNoteFromArchives,
+    deleteFromArchives,
+    restoreFromTrash,
   } = useNotes();
   const { showAlert } = useDetails();
   const currentNoteState = existingNote ? note : newNoteState;
@@ -154,10 +160,14 @@ const RichTextEditor = ({
             }));
           }}
         >
-          {noteState.isPinned ? (
-            <BsPinAngleFill size={"1.1rem"} />
+          {!cannotEdit ? (
+            noteState.isPinned ? (
+              <BsPinAngleFill size={"1.1rem"} />
+            ) : (
+              <BsPinAngle size={"1.1rem"} />
+            )
           ) : (
-            <BsPinAngle size={"1.1rem"} />
+            ""
           )}
         </button>
       </div>
@@ -194,35 +204,42 @@ const RichTextEditor = ({
         )}
 
         <div className="right-btns flex-and-center gap-sm ">
-          {edit ? (
-            <button
-              data-tip="Save"
-              disabled={
-                !extractContent(noteState.description) || !noteState.title
-              }
-              className={` ${
-                (!extractContent(noteState.description) || !noteState.title) &&
-                "cursor-no-drop"
-              }  `}
-              onClick={async () => {
-                canUpdateNote ? await updateThisNote() : await addThisNote();
-              }}
-            >
-              <AiTwotoneSave size={"1.1rem"} />
-            </button>
+          {!cannotEdit ? (
+            edit ? (
+              <button
+                data-tip="Save"
+                disabled={
+                  !extractContent(noteState.description) || !noteState.title
+                }
+                className={` ${
+                  (!extractContent(noteState.description) ||
+                    !noteState.title) &&
+                  "cursor-no-drop"
+                }  `}
+                onClick={async () => {
+                  canUpdateNote ? await updateThisNote() : await addThisNote();
+                }}
+              >
+                <AiTwotoneSave size={"1.1rem"} />
+              </button>
+            ) : (
+              <button
+                data-tip="Edit"
+                onClick={() => {
+                  setEdit(true);
+                }}
+              >
+                <AiTwotoneEdit size={"1.1rem"} />
+              </button>
+            )
           ) : (
-            <button
-              data-tip="Edit"
-              onClick={() => {
-                setEdit(true);
-              }}
-            >
-              <AiTwotoneEdit size={"1.1rem"} />
-            </button>
+            ""
           )}
           {!disableArchive && !inArchives && (
             <button
-              onClick={() => addNoteToArchives(currentNoteState._id)}
+              onClick={() =>
+                addNoteToArchives(currentNoteState._id, canAddToArchive)
+              }
               data-tip="Add to Archives"
             >
               <BsArchiveFill size={"1.1rem"} />
@@ -236,12 +253,50 @@ const RichTextEditor = ({
               <BsArchiveFill size={"1.1rem"} />
             </button>
           )}
-          {!disableDelete && (
+          {!disableDelete && !canRestore && !inArchives && (
             <button
-              onClick={() => deleteNote(currentNoteState._id)}
+              onClick={() =>
+                deleteNote(
+                  noteState.title,
+                  noteState.description,
+                  noteState.tags,
+                  noteState._id,
+                  noteState.isPinned,
+                  noteState.bgColor,
+                  noteState.createdDate,
+                  noteState.createdTime
+                )
+              }
               data-tip="Delete"
             >
               <AiTwotoneDelete size={"1.1rem"} />
+            </button>
+          )}
+          {inArchives && (
+            <button
+              onClick={() => deleteFromArchives(currentNoteState._id)}
+              data-tip="Delete From Archives"
+            >
+              <AiTwotoneDelete size={"1.1rem"} />
+            </button>
+          )}
+          {canRestore && (
+            <button
+              onClick={() => {
+                restoreFromTrash(
+                  noteState.title,
+                  noteState.description,
+                  noteState.tags,
+                  noteState._id,
+                  noteState.isPinned,
+                  noteState.bgColor,
+                  noteState.createdDate,
+                  noteState.createdTime
+                );
+              }}
+              data-tip="Restore Note"
+            >
+              <FaTrashRestore size={"1.1rem"} />
             </button>
           )}
         </div>

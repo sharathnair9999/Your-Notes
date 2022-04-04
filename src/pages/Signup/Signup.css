@@ -1,4 +1,3 @@
-
 .signup-page-section {
   background-color: var(--body-bg-light-dark);
   padding: 1rem 2rem;
@@ -17,11 +16,11 @@
   flex: 1;
 }
 
-.avatar-img{
+.avatar-img {
   width: 5rem;
 }
 
-.signup-image-container img{
+.signup-image-container img {
   width: 100%;
   height: auto;
 }
@@ -34,7 +33,7 @@
   gap: 10px;
 }
 
-.show-icon{
+.show-icon {
   cursor: pointer;
 }
 
@@ -98,35 +97,33 @@
   width: 12px;
 }
 
-@media screen and (max-width:768px) {
-
-  .signup-page-section{
+@media screen and (max-width: 768px) {
+  .signup-page-section {
     height: 90vh;
     margin: 1rem;
     padding: 1rem;
   }
 
-  .signup-form h1{
+  .signup-form h1 {
     font-size: 1.5rem;
   }
 
-  .log-in-btn{
+  .log-in-btn {
     padding: 2px 4px;
     width: 80%;
     margin: 5px auto;
   }
 
-  .signup-image-container{
+  .signup-image-container {
     display: none;
   }
 
-  .signup-form{
+  .signup-form {
     font-size: 75%;
     gap: 5px;
   }
 
-  .existing-user{
+  .existing-user {
     font-size: 0.7rem;
   }
-
 }

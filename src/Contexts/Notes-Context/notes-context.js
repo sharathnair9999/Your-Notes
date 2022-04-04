@@ -47,7 +47,6 @@ const NoteProvider = ({ children }) => {
         note,
       });
       const { notes } = data;
-      console.log(notes);
       notesDispatch({ type: "ADD_NEW_NOTE", payload: notes });
       showAlert("success", "Successfully Added Note :)", 1500);
     } catch (error) {
@@ -59,7 +58,7 @@ const NoteProvider = ({ children }) => {
     title,
     description,
     tags,
-    id,
+    _id,
     isPinned,
     bgColor,
     createdDate,
@@ -75,9 +74,14 @@ const NoteProvider = ({ children }) => {
       createdTime,
     };
     try {
-      const { data } = await callApi("POST", encodedToken, `/api/notes/${id}`, {
-        note,
-      });
+      const { data } = await callApi(
+        "POST",
+        encodedToken,
+        `/api/notes/${_id}`,
+        {
+          note,
+        }
+      );
       const { notes } = data;
       notesDispatch({ type: "UPDATE_NOTE", payload: notes });
       showAlert("success", "Successfully Updated Note :)", 1500);
@@ -86,19 +90,62 @@ const NoteProvider = ({ children }) => {
     }
   };
 
-  const deleteNote = async (id) => {
+  const deleteNote = async (
+    title,
+    description,
+    tags,
+    _id,
+    isPinned,
+    bgColor,
+    createdDate,
+    createdTime
+  ) => {
     try {
       const { data } = await callApi(
         "DELETE",
         encodedToken,
-        `/api/notes/${id}`
+        `/api/notes/${_id}`
       );
       const { notes } = data;
+      const note = {
+        title,
+        description,
+        tags,
+        _id,
+        isPinned,
+        bgColor,
+        createdDate,
+        createdTime,
+      };
       notesDispatch({ type: "DELETE_NOTE", payload: notes });
+      notesDispatch({ type: "ADD_TO_TRASH", payload: note });
       showAlert("success", "Successfully Deleted Note :)", 1500);
     } catch (error) {
       showAlert("error", "Couldn't delete this note at the moment", 1500);
     }
+  };
+
+  const restoreFromTrash = (
+    title,
+    description,
+    tags,
+    _id,
+    isPinned,
+    bgColor,
+    createdDate,
+    createdTime
+  ) => {
+    const newTrash = notesState.trashNotes.filter((note) => note._id !== _id);
+    notesDispatch({ type: "RESTORE_FROM_TRASH", payload: newTrash });
+    addNewNote(
+      title,
+      description,
+      tags,
+      isPinned,
+      bgColor,
+      createdDate,
+      createdTime
+    );
   };
 
   const getArchivedNotes = async () => {
@@ -112,17 +159,15 @@ const NoteProvider = ({ children }) => {
     }
   };
 
-  const addNoteToArchives = async (id, note) => {
+  const addNoteToArchives = async (_id) => {
     try {
       const { data } = await callApi(
         "POST",
         encodedToken,
-        `/api/notes/archives/${id}`,
-        {
-          note,
-        }
+        `/api/notes/archives/${_id}`
       );
       const { archives, notes } = data;
+      console.log(archives, notes);
       notesDispatch({
         type: "ADD_NOTE_TO_ARCHIVES",
         payload: { archives, notes },
@@ -133,12 +178,12 @@ const NoteProvider = ({ children }) => {
     }
   };
 
-  const restoreNoteFromArchives = async (id) => {
+  const restoreNoteFromArchives = async (_id) => {
     try {
       const { data } = await callApi(
         "POST",
         encodedToken,
-        `/api/archives/restore/${id}`
+        `/api/archives/restore/${_id}`
       );
       const { archives, notes } = data;
       notesDispatch({
@@ -155,16 +200,16 @@ const NoteProvider = ({ children }) => {
     }
   };
 
-  const deleteFromArchives = async (id) => {
+  const deleteFromArchives = async (_id) => {
     try {
       const { data } = await callApi(
         "DELETE",
         encodedToken,
-        `/api/archives/delete/${id}`
+        `/api/archives/delete/${_id}`
       );
       const { archives } = data;
       notesDispatch({ type: "DELETE_NOTE_FROM_ARCHIVES", payload: archives });
-      showAlert("success", "Successfully Moved Note to Archives :)", 1500);
+      showAlert("success", "Successfully Deleted Note from Archives :)", 1500);
     } catch (error) {
       showAlert("error", "Couldn't delete the note from archives", 1500);
     }
@@ -182,6 +227,7 @@ const NoteProvider = ({ children }) => {
     addNoteToArchives,
     getArchivedNotes,
     getNotes,
+    restoreFromTrash,
   };
   return <NoteContext.Provider value={value}>{children}</NoteContext.Provider>;
 };

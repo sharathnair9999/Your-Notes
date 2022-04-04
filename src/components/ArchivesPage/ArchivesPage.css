@@ -1,0 +1,11 @@
+.archives-container{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+  overflow-y: auto;
+}

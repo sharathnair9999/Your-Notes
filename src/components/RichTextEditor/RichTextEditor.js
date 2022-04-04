@@ -19,8 +19,15 @@ const RichTextEditor = ({
   existingNote,
   note,
   setCreateNote,
+  inArchives,
 }) => {
-  const { addNewNote, updateNote, deleteNote, addNoteToArchives } = useNotes();
+  const {
+    addNewNote,
+    updateNote,
+    deleteNote,
+    addNoteToArchives,
+    restoreNoteFromArchives,
+  } = useNotes();
   const { showAlert } = useDetails();
   const currentNoteState = existingNote ? note : newNoteState;
   const [noteState, setNoteState] = useState(currentNoteState);
@@ -117,6 +124,7 @@ const RichTextEditor = ({
       <div className="input-container flex justify-space-btw items-center">
         {edit && (
           <input
+            autoFocus={edit}
             type="text"
             className="note-title w-100"
             placeholder="Title"
@@ -212,10 +220,18 @@ const RichTextEditor = ({
               <AiTwotoneEdit size={"1.1rem"} />
             </button>
           )}
-          {!disableArchive && (
+          {!disableArchive && !inArchives && (
             <button
               onClick={() => addNoteToArchives(currentNoteState._id)}
-              data-tip="Archive"
+              data-tip="Add to Archives"
+            >
+              <BsArchiveFill size={"1.1rem"} />
+            </button>
+          )}
+          {inArchives && (
+            <button
+              onClick={() => restoreNoteFromArchives(currentNoteState._id)}
+              data-tip="Remove From Archives"
             >
               <BsArchiveFill size={"1.1rem"} />
             </button>

@@ -53,7 +53,7 @@ function App() {
             </RequireAuth>
           }
         >
-          <Route index element={<NotesLanding/>} />
+          <Route index element={<NotesLanding />} />
           <Route path="all-notes" element={<NotesSection />} />
           <Route path="label" element={<LabelsPage />} />
           <Route path="archive" element={<ArchivesPage />} />

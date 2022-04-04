@@ -31,7 +31,7 @@ const TrashPage = () => {
           ).length > 0 ? (
             trashNotes.map((note) => (
               <RichTextEditor
-              key={note._id}
+                key={note._id}
                 note={note}
                 existingNote
                 width

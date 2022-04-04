@@ -17,7 +17,7 @@ const Login = () => {
   };
 
   const handleLogin = (e, details) => {
-     loginUser(e, details);
+    loginUser(e, details);
   };
 
   return (

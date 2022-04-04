@@ -8,7 +8,13 @@ const ArchivesPage = () => {
   return (
     <div>
       {archivedNotes?.map((note) => (
-        <RichTextEditor key={note._id} note={note} editNote width existingNote />
+        <RichTextEditor
+          key={note._id}
+          note={note}
+          editNote
+          width
+          existingNote
+        />
       ))}
     </div>
   );

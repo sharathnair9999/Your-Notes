@@ -15,8 +15,9 @@ export const notesReducer = (state, action) => {
       };
     case "ADD_NEW_NOTE":
       return {
-        ...state, allNotes: payload
-      }
+        ...state,
+        allNotes: payload,
+      };
     case "UPDATE_NOTE":
       return {
         ...state,
@@ -27,7 +28,7 @@ export const notesReducer = (state, action) => {
     case "ADD_TO_TRASH":
       return { ...state, trashNotes: [...state.trashNotes, payload] };
     case "RESTORE_FROM_TRASH":
-      return {...state, trashNotes : payload, }
+      return { ...state, trashNotes: payload };
     case "GET_ARCHIVED_NOTES":
       return {
         ...state,

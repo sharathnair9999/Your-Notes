@@ -164,7 +164,7 @@ const NoteProvider = ({ children }) => {
       const { data } = await callApi(
         "POST",
         encodedToken,
-        `/api/notes/archives/${_id}`,
+        `/api/notes/archives/${_id}`
       );
       const { archives, notes } = data;
       console.log(archives, notes);

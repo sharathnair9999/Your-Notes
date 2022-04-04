@@ -11,7 +11,7 @@ const initialUserState = {
   firstName: userData ? userData.firstName : null,
   lastName: userData ? userData.lastName : null,
   alert: initialAlertState,
-  loading:false
+  loading: false,
 };
 
 const testUser = {
@@ -30,7 +30,7 @@ const userReducer = (state, action) => {
         lastName: payload.lastName,
       };
     case "LOGOUT":
-      return {...state, encodedToken: null, firstName: null, lastName: null };
+      return { ...state, encodedToken: null, firstName: null, lastName: null };
     case "SIGNUP":
       return {
         firstName: payload.firstName,
@@ -44,8 +44,9 @@ const userReducer = (state, action) => {
       };
     case "LOADING":
       return {
-        ...state, loading: payload
-      }
+        ...state,
+        loading: payload,
+      };
     default:
       return state;
   }

@@ -20,7 +20,10 @@ const NotesPage = () => {
             >
               <i className="fa-solid fa-note-sticky"></i>
               <span>Notes</span>
-              <span className="ml-auto">{notesState?.allNotes?.length>0 && notesState?.allNotes?.length}</span>
+              <span className="ml-auto">
+                {notesState?.allNotes?.length > 0 &&
+                  notesState?.allNotes?.length}
+              </span>
             </NavLink>
           </li>
           <li>
@@ -34,7 +37,9 @@ const NotesPage = () => {
             >
               <i className="fa-solid fa-box-archive"></i>
               <span>Label</span>
-              <span className="ml-auto">{notesState?.label?.length>0 && notesState?.label?.length}</span>
+              <span className="ml-auto">
+                {notesState?.label?.length > 0 && notesState?.label?.length}
+              </span>
             </NavLink>
           </li>
           <li>
@@ -48,7 +53,10 @@ const NotesPage = () => {
             >
               <i className="fa-solid fa-tag"></i>
               <span>Archive</span>
-              <span className="ml-auto">{notesState?.archivedNotes?.length>0 &&notesState?.archivedNotes?.length}</span>
+              <span className="ml-auto">
+                {notesState?.archivedNotes?.length > 0 &&
+                  notesState?.archivedNotes?.length}
+              </span>
             </NavLink>
           </li>
           <li>
@@ -62,7 +70,10 @@ const NotesPage = () => {
             >
               <i className="fa-solid fa-trash-can"></i>
               <span>Trash</span>
-              <span className="ml-auto">{notesState?.trashNotes?.length>0 && notesState?.trashNotes?.length}</span>
+              <span className="ml-auto">
+                {notesState?.trashNotes?.length > 0 &&
+                  notesState?.trashNotes?.length}
+              </span>
             </NavLink>
           </li>
         </ul>

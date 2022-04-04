@@ -1,9 +1,9 @@
-.footer{
+.footer {
   padding: 1rem;
   background-color: #1a1a2e;
 }
 
-.links{
+.links {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,35 +11,34 @@
   font-size: 1.3rem;
 }
 
-.links li{
+.links li {
   list-style: none;
 }
 
-.socials-list{
+.socials-list {
   display: flex;
   justify-items: center;
   gap: 2rem;
 }
 
-.bottom{
+.bottom {
   text-align: center;
 }
 
-@media screen and (max-width:768px) {
-  .footer{
+@media screen and (max-width: 768px) {
+  .footer {
     padding: 0.5rem;
   }
 
-  .socials-list{
+  .socials-list {
     font-size: 1rem;
   }
 
-  .links{
+  .links {
     font-size: 1rem;
   }
 
-  .bottom{
+  .bottom {
     font-size: 0.8rem;
   }
-
 }

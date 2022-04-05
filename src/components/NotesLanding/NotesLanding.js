@@ -8,8 +8,8 @@ const NotesLanding = () => {
       <div className="img-container">
         <img
           className="responsive-img"
-          height={"300px"}
-          width={"300px"}
+          height={"200px"}
+          width={"200px"}
           src={constants.imgUrls.notes_landing}
           alt="notes landing illustration"
         />

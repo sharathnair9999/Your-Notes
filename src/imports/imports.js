@@ -1,6 +1,5 @@
 import Login from "../pages/Login/Login";
 import Landing from "../pages/Landing/Landing";
-import HomePage from "../pages/HomePage/HomePage";
 import Signup from "../pages/Signup/Signup";
 import SingleNotePage from "../pages/SingleNotePage/SingleNotePage";
 import ResetPassword from "../pages/ResetPassword/ResetPassword";
@@ -29,7 +28,6 @@ import RichTextEditor from "../components/RichTextEditor/RichTextEditor";
 export {
   Alert,
   Login,
-  HomePage,
   Landing,
   SingleNotePage,
   Signup,

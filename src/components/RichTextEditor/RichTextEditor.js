@@ -10,6 +10,7 @@ import { useDetails, useNotes, extractContent } from "../../imports/imports";
 import ReactTooltip from "react-tooltip";
 import { dateAndTime } from "../../app-utils/app-utils";
 import { Multiselect } from "multiselect-react-dropdown";
+import { availableTags } from "../../app-utils/app-utils";
 
 const RichTextEditor = ({
   editNote,
@@ -41,7 +42,7 @@ const RichTextEditor = ({
   const [edit, setEdit] = useState(editNote || false);
   const noteTextRef = useRef(null);
   const currentRef = useRef(null);
-  const availableTags = ["Office", "Personal", "Home", "Bills", "EMIs"];
+
 
   useEffect(() => {
     noteState?.bgColor

@@ -1,0 +1,26 @@
+.chips-container {
+  justify-content: center;
+  gap: 3rem;
+  width: 100%;
+}
+
+.chip-item {
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--body-bg-full-dark);
+  color: var(--text-white);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.chip-item:hover {
+  background-color: var(--text-white);
+  color: var(--body-bg-full-dark);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.chip-active{
+  background-color: var(--text-white);
+  color: var(--body-bg-full-dark);
+
+}

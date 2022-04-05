@@ -22,3 +22,5 @@ export const dateAndTime = () => {
 
   return { currentDate, currentTime };
 };
+
+export const availableTags = ["Office", "Personal", "Home", "Bills", "EMIs"];

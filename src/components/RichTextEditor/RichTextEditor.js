@@ -9,6 +9,7 @@ import { formats, modules, newNoteState } from "./utils";
 import { useDetails, useNotes, extractContent } from "../../imports/imports";
 import ReactTooltip from "react-tooltip";
 import { dateAndTime } from "../../app-utils/app-utils";
+import { Multiselect } from "multiselect-react-dropdown";
 
 const RichTextEditor = ({
   editNote,
@@ -40,6 +41,7 @@ const RichTextEditor = ({
   const [edit, setEdit] = useState(editNote || false);
   const noteTextRef = useRef(null);
   const currentRef = useRef(null);
+  const availableTags = ["Office", "Personal", "Home", "Bills", "EMIs"];
 
   useEffect(() => {
     noteState?.bgColor
@@ -114,10 +116,22 @@ const RichTextEditor = ({
     noteTextRef.current.style.backgroundColor = randomColor;
   };
 
+  const addToTags = (selectedList, selectedItem) => {
+    setNoteState((state) => {
+      return { ...state, tags: [...selectedList] };
+    });
+  };
+
+  const removeTag = (selectedList, selectedItem) => {
+    setNoteState((state) => {
+      return { ...state, tags: [...selectedList] };
+    });
+  };
+
   return (
     <div
       ref={noteTextRef}
-      className={`text-editor-container flex-col flex ${
+      className={`text-editor-container flex flex-col w-100 ${
         width ? "limit-width" : "full-width"
       }`}
     >
@@ -140,7 +154,7 @@ const RichTextEditor = ({
             }}
           />
         )}
-        {!edit && <p className="bold">{noteState.title}</p>}
+        {!edit && <p className="note-title-read">{noteState.title}</p>}
 
         <button
           className="btn-transparent"
@@ -187,8 +201,14 @@ const RichTextEditor = ({
       ) : (
         <div className="text-editor-contents my-auto" ref={currentRef}></div>
       )}
+      {!edit && (
+        <div className="created-at flex justify-fs items-fs gap-sm  mr-auto">
+          <p>Created at : {noteState.createdDate}</p>
+          <p>{noteState.createdTime}</p>
+        </div>
+      )}
 
-      <div className="action-btn-section flex justify-space-btw items-center mt-auto">
+      <div className="action-btn-section flex justify-center items-center mt-auto">
         <div className="left-btns flex-and-center gap-sm ">
           {edit && (
             <button onClick={() => changeBg()} data-tip="Change Background">
@@ -196,14 +216,35 @@ const RichTextEditor = ({
             </button>
           )}
         </div>
-        {!edit && (
-          <div className="middle-section flex justify-fs items-fs flex-col mr-auto">
-            <p>{noteState.createdDate}</p>
-            <p>{noteState.createdTime}</p>
-          </div>
-        )}
 
-        <div className="right-btns flex-and-center gap-sm ">
+        
+          <div className="label-section">
+            <Multiselect
+              options={availableTags}
+              onSelect={addToTags}
+              isObject={false}
+              disable={!edit}
+              placeholder="Add tags"
+              hidePlaceholder={!edit}
+              onRemove={removeTag}
+              selectedValues={noteState.tags}
+              emptyRecordMsg="No More Tags"
+              style={{
+                chips: {
+                  background: "#22223b",
+                  color: "#f8f9fa",
+                },
+                searchBox: {
+                  border: "none",
+                  "border-bottom": "1px solid blue",
+                  "border-radius": "0px",
+                },
+              }}
+            />
+          </div>
+        
+
+        <div className="right-btns ml-auto flex-and-center gap-sm ">
           {!cannotEdit ? (
             edit ? (
               <button

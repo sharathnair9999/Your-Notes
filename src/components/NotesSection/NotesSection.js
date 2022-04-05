@@ -17,7 +17,7 @@ const NotesSection = () => {
   }, [getNotes, notesState]);
 
   return (
-    <div className="flex-and-center w-100 flex-col">
+    <div className="flex-and-center w-100 flex-col mx-1">
       <MainSearchBar
         setSearchInput={setSearchInput}
         searchInput={searchInput}

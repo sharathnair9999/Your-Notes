@@ -1,6 +1,7 @@
 .text-editor-container{
   color: var(--black);
   border-radius: 5px;
+  min-height: 10rem;
 }
 .text-editor-contents{
   padding: 5px 10px;

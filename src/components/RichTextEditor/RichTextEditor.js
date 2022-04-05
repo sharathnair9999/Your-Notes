@@ -117,7 +117,7 @@ const RichTextEditor = ({
   return (
     <div
       ref={noteTextRef}
-      className={`text-editor-container ${
+      className={`text-editor-container flex-col flex ${
         width ? "limit-width" : "full-width"
       }`}
     >
@@ -185,10 +185,10 @@ const RichTextEditor = ({
           placeholder="Start writing your note here..."
         />
       ) : (
-        <div className="text-editor-contents" ref={currentRef}></div>
+        <div className="text-editor-contents my-auto" ref={currentRef}></div>
       )}
 
-      <div className="action-btn-section flex justify-space-btw items-center ">
+      <div className="action-btn-section flex justify-space-btw items-center mt-auto">
         <div className="left-btns flex-and-center gap-sm ">
           {edit && (
             <button onClick={() => changeBg()} data-tip="Change Background">

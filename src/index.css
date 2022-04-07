@@ -32,6 +32,7 @@ a {
 }
 ::-webkit-scrollbar {
   width: 10px;
+  height: 5px;
   border-radius: 5px;
 }
 
@@ -70,4 +71,25 @@ p {
 
 .App {
   position: relative;
+}
+
+.w-100{
+  width: 100%;
+}
+
+.y-auto{
+  overflow-y: auto;
+}
+.x-auto{
+  overflow-x: auto;
+}
+.x-scroll{
+  overflow-x: scroll;
+}
+.y-scroll{
+  overflow-y: scroll;
+}
+
+.text-center{
+  text-align: center;
 }

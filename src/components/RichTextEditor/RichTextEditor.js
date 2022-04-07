@@ -8,13 +8,12 @@ import { FaTrashRestore } from "react-icons/fa";
 import { formats, modules, newNoteState } from "./utils";
 import { useDetails, useNotes, extractContent } from "../../imports/imports";
 import ReactTooltip from "react-tooltip";
-import { dateAndTime } from "../../app-utils/app-utils";
+import { colorArray, dateAndTime } from "../../app-utils/app-utils";
 import { Multiselect } from "multiselect-react-dropdown";
 import { availableTags } from "../../app-utils/app-utils";
 
 const RichTextEditor = ({
   editNote,
-  width,
   newNote,
   canUpdateNote,
   disableDelete,
@@ -42,7 +41,6 @@ const RichTextEditor = ({
   const [edit, setEdit] = useState(editNote || false);
   const noteTextRef = useRef(null);
   const currentRef = useRef(null);
-
 
   useEffect(() => {
     noteState?.bgColor
@@ -100,18 +98,6 @@ const RichTextEditor = ({
   };
 
   const changeBg = () => {
-    const colorArray = [
-      "#dedfe8",
-      "#fbf8cc",
-      "#ffcfd2",
-      "#b9fbc0",
-      "#8eecf5",
-      "#e6ccb2",
-      "#d8b4fe",
-      "#fda4af",
-      "#f8fafc",
-      "#fdba74",
-    ];
     var randomColor = colorArray[Math.floor(Math.random() * colorArray.length)];
     setNoteState((state) => ({ ...state, bgColor: randomColor }));
     noteTextRef.current.style.backgroundColor = randomColor;
@@ -130,12 +116,7 @@ const RichTextEditor = ({
   };
 
   return (
-    <div
-      ref={noteTextRef}
-      className={`text-editor-container flex flex-col w-100 ${
-        width ? "limit-width" : "full-width"
-      }`}
-    >
+    <div ref={noteTextRef} className={`text-editor-container flex flex-col`}>
       <ReactTooltip
         place="bottom"
         afterShow={() => {
@@ -218,7 +199,7 @@ const RichTextEditor = ({
           )}
         </div>
 
-        
+        {edit && (
           <div className="label-section">
             <Multiselect
               options={availableTags}
@@ -234,6 +215,8 @@ const RichTextEditor = ({
                 chips: {
                   background: "#22223b",
                   color: "#f8f9fa",
+                  fontSize: "13px",
+                  padding: "2px 5px",
                 },
                 searchBox: {
                   border: "none",
@@ -243,7 +226,16 @@ const RichTextEditor = ({
               }}
             />
           </div>
-        
+        )}
+        {!edit && (
+          <div className="flex-and-center chips-container-read">
+            {noteState.tags.map((tag) => (
+              <span className="chip" key={tag}>
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
 
         <div className="right-btns ml-auto flex-and-center gap-sm ">
           {!cannotEdit ? (

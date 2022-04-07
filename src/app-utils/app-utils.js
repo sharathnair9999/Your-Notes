@@ -24,3 +24,41 @@ export const dateAndTime = () => {
 };
 
 export const availableTags = ["Office", "Personal", "Home", "Bills", "EMIs"];
+
+export const colorArray = [
+  "#dedfe8",
+  "#fbf8cc",
+  "#ffcfd2",
+  "#b9fbc0",
+  "#8eecf5",
+  "#e6ccb2",
+  "#d8b4fe",
+  "#fda4af",
+  "#f8fafc",
+  "#fdba74",
+  "#219ebc",
+  "#e6ccb2",
+  "#9c6644",
+  "#2d6a4f",
+  "#e85d04",
+  "#b6ad90",
+];
+
+export const colorArray2 = [
+  "#dedfe8",
+  "#fbf8cc",
+  "#ffcfd2",
+  "#b9fbc0",
+  "#8eecf5",
+  "#e6ccb2",
+  "#d8b4fe",
+  "#fda4af",
+  "#f8fafc",
+  "#fdba74",
+  "#219ebc",
+  "#e6ccb2",
+  "#9c6644",
+  "#2d6a4f",
+  "#e85d04",
+  "#b6ad90",
+];

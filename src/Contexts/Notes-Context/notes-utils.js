@@ -3,6 +3,7 @@ export const initialNoteState = {
   archivedNotes: [],
   trashNotes: [],
   labels: [],
+  pinnedNotes:[]
 };
 
 export const notesReducer = (state, action) => {
@@ -13,6 +14,10 @@ export const notesReducer = (state, action) => {
         ...state,
         allNotes: payload,
       };
+      case "GET_PINNED_NOTES" :
+        return {
+          ...state, pinnedNotes:payload
+        }
     case "ADD_NEW_NOTE":
       return {
         ...state,

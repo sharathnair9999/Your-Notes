@@ -1,0 +1,20 @@
+.error-page-section {
+  background-color: var(--body-bg-light-dark);
+  margin: 1rem 3rem;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  display: flex;
+  height: 90vh;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  flex-direction: column;
+}
+
+.error-page-section h1{
+  font-size: 1.5rem;
+}
+
+.error-img-container{
+  max-width: 50rem;
+}

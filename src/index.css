@@ -93,3 +93,16 @@ p {
 .text-center{
   text-align: center;
 }
+
+.btn-primary {
+  background-color: var(--text-white);
+  color: var(--body-bg-full-dark);
+  transition: background-color 0.3s ease-in-out;
+  box-shadow: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--body-bg-full-dark);
+  color: var(--text-white);
+  transition: all 0.3s ease-in-out;
+}

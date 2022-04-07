@@ -3,7 +3,7 @@ export const initialNoteState = {
   archivedNotes: [],
   trashNotes: [],
   labels: [],
-  pinnedNotes:[]
+  pinnedNotes: [],
 };
 
 export const notesReducer = (state, action) => {
@@ -14,10 +14,11 @@ export const notesReducer = (state, action) => {
         ...state,
         allNotes: payload,
       };
-      case "GET_PINNED_NOTES" :
-        return {
-          ...state, pinnedNotes:payload
-        }
+    case "GET_PINNED_NOTES":
+      return {
+        ...state,
+        pinnedNotes: payload,
+      };
     case "ADD_NEW_NOTE":
       return {
         ...state,
@@ -33,6 +34,10 @@ export const notesReducer = (state, action) => {
     case "ADD_TO_TRASH":
       return { ...state, trashNotes: [...state.trashNotes, payload] };
     case "RESTORE_FROM_TRASH":
+      return { ...state, trashNotes: payload };
+    case "EMPTY_TRASH":
+      return { ...state, trashNotes: [] };
+    case "DELETE_NOTE_FROM_TRASH":
       return { ...state, trashNotes: payload };
     case "GET_ARCHIVED_NOTES":
       return {

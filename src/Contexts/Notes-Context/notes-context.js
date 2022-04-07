@@ -141,8 +141,8 @@ const NoteProvider = ({ children }) => {
       title,
       description,
       tags,
-      isPinned,
       bgColor,
+      isPinned,
       createdDate,
       createdTime
     );

@@ -60,7 +60,6 @@ And now this application runs in your local machine too.
 	- Restore from Trash
 	- Delete from Trash Permanently
 	- Clear Trash
-- Add/Remove  video to Watch Later
 
 
 # Demo

@@ -3,7 +3,7 @@
   <img src="https://res.cloudinary.com/sharath-media-library/image/upload/v1649310087/note-app/notes_1_kxeots.png" width="150" title="App Logo">
 
    # [Your Notes](https://your-note-app.netlify.app/)
-     A Personal Note Taking Application to fulfill all your reminders, task list at your comfort from anywhere in the world.
+     A video library where you can learn to draw.
 </div>
 
 #### Stack Used
@@ -22,6 +22,22 @@
  - [Axios](https://www.npmjs.com/package/axios) - For making API calls
  - [React Quill](https://www.npmjs.com/package/react-quill) - For writing Note Content in a Rich Text Editor
 
+#### How To Run in Local - 
+Run these commands in your terminal
+ ```
+ git clone https://github.com/sharathnair9999/Your-Notes.git
+ cd ./Your-Notes
+ npm install
+```
+
+Add `.env` file to the root directory and place a JWT secret key in it like below and save it
+`REACT_APP_JWT_SECRET = <your_secret_code>`
+
+After that Run in your local with this command. 
+
+`npm start`
+secret_code can be anything of your choice. 
+And now this application runs in your local machine too. 
 
 # Features
 

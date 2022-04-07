@@ -71,8 +71,8 @@ const NotesSection = () => {
           <div className="flex items-center justify-space-btw y-auto">
             {pinnedNotes?.length > 0 ? (
               <div className="flex flex-col items-center gap-sm mt-1 justify-fs ">
-                <div className="flex flex-col gap-sm justify-fs items-fs ">
-                  <p className="flex-and-center gap-sm ">
+                <div className="flex flex-col gap-sm justify-fs items-center ">
+                  <p className="flex-and-center gap-sm text-center">
                     <BsPinAngleFill />{" "}
                     <span>{`Pinned Notes - ${pinnedNotes.length}`}</span>
                   </p>
@@ -87,8 +87,8 @@ const NotesSection = () => {
                     ))}
                   </div>
                 </div>
-                <div className="flex flex-col gap-1 justify-fs items-center ">
-                  <p className="flex-and-center gap-sm">
+                <div className="flex flex-col gap-sm justify-fs items-center ">
+                  <p className="flex-and-center gap-sm text-center">
                     <BsPinAngleFill />{" "}
                     <span>{`Other Notes - ${notPinnedNotes.length}`}</span>
                   </p>

@@ -141,8 +141,8 @@ const NoteProvider = ({ children }) => {
       title,
       description,
       tags,
-      isPinned,
       bgColor,
+      isPinned,
       createdDate,
       createdTime
     );
@@ -214,6 +214,12 @@ const NoteProvider = ({ children }) => {
       showAlert("error", "Couldn't delete the note from archives", 1500);
     }
   };
+  
+  const removeFromTrash = (_id) => {
+    const newTrash = notesState.trashNotes.filter(note=>note._id!==_id)
+    notesDispatch({type:"DELETE_NOTE_FROM_TRASH", payload:newTrash})
+    showAlert("success", "Deleted Note Permanently", 1500);
+  }
 
   const value = {
     notesState,
@@ -228,6 +234,7 @@ const NoteProvider = ({ children }) => {
     getArchivedNotes,
     getNotes,
     restoreFromTrash,
+    removeFromTrash
   };
   return <NoteContext.Provider value={value}>{children}</NoteContext.Provider>;
 };

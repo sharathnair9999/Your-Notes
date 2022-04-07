@@ -3,7 +3,12 @@ import "./RichTextEditor.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { BsPinAngle, BsPinAngleFill, BsArchiveFill } from "react-icons/bs";
-import { AiTwotoneEdit, AiTwotoneDelete, AiTwotoneSave } from "react-icons/ai";
+import {
+  AiTwotoneEdit,
+  AiTwotoneDelete,
+  AiTwotoneSave,
+  AiFillDelete,
+} from "react-icons/ai";
 import { FaTrashRestore } from "react-icons/fa";
 import { formats, modules, newNoteState } from "./utils";
 import { useDetails, useNotes, extractContent } from "../../imports/imports";
@@ -25,6 +30,7 @@ const RichTextEditor = ({
   canRestore,
   canAddToArchive,
   cannotEdit,
+  inTrash,
 }) => {
   const {
     addNewNote,
@@ -34,6 +40,7 @@ const RichTextEditor = ({
     restoreNoteFromArchives,
     deleteFromArchives,
     restoreFromTrash,
+    removeFromTrash,
   } = useNotes();
   const { showAlert } = useDetails();
   const currentNoteState = existingNote ? note : newNoteState;
@@ -312,6 +319,15 @@ const RichTextEditor = ({
               data-tip="Delete From Archives"
             >
               <AiTwotoneDelete size={"1.1rem"} />
+            </button>
+          )}
+          {inTrash && (
+            <button
+              onClick={() => removeFromTrash(currentNoteState._id)}
+              data-tip="Delete Permanently"
+            >
+              <AiFillDelete size={"1.5rem"} />
+              
             </button>
           )}
           {canRestore && (

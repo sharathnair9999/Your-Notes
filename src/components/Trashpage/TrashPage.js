@@ -7,9 +7,10 @@ import {
   MainSearchBar,
   EmptyData,
 } from "../../imports/imports";
+import { BsFillTrashFill } from "react-icons/bs";
 
 const TrashPage = () => {
-  const { notesState } = useNotes();
+  const { notesState, notesDispatch } = useNotes();
   const { trashNotes } = notesState;
   const [searchInput, setSearchInput] = useState("");
 
@@ -19,6 +20,15 @@ const TrashPage = () => {
         searchInput={searchInput}
         setSearchInput={setSearchInput}
       />
+      <div className="my-1 flex-and-center w-100">
+        <button
+          className="btn btn-primary flex-and-center ml-auto gap-sm"
+          onClick={() => notesDispatch({ type: "EMPTY_TRASH" })}
+        >
+          <BsFillTrashFill />
+          <span>Clear Trash</span>
+        </button>
+      </div>
       <div className="trash-container">
         {trashNotes.length > 0 ? (
           trashNotes.filter((note) =>
@@ -39,6 +49,7 @@ const TrashPage = () => {
                 canRestore
                 disableArchive
                 cannotEdit
+                inTrash
               />
             ))
           ) : (

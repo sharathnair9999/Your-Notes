@@ -107,24 +107,27 @@ const NoteProvider = ({ children }) => {
   ) => {
     try {
       const { data } = await callApi(
-        "DELETE",
+        "POST",
         encodedToken,
-        `/api/notes/${_id}`
+        `/api/trash/delete/${_id}`,
+        {
+          note: {
+            title,
+            description,
+            tags,
+            _id,
+            isPinned,
+            bgColor,
+            createdDate,
+            createdTime,
+            bgLight,
+          },
+        }
       );
-      const { notes } = data;
-      const note = {
-        title,
-        description,
-        tags,
-        _id,
-        isPinned,
-        bgColor,
-        createdDate,
-        createdTime,
-        bgLight,
-      };
-      notesDispatch({ type: "DELETE_NOTE", payload: notes });
-      notesDispatch({ type: "ADD_TO_TRASH", payload: note });
+      const { notes, trash } = data;
+
+      notesDispatch({ type: "GET_ALL_NOTES", payload: notes });
+      notesDispatch({ type: "TRASH", payload: trash });
       showAlert("success", "Successfully Deleted Note :)", 1500);
     } catch (error) {
       showAlert("error", "Couldn't delete this note at the moment", 1500);

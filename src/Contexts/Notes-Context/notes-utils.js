@@ -29,10 +29,8 @@ export const notesReducer = (state, action) => {
         ...state,
         allNotes: payload,
       };
-    case "DELETE_NOTE":
-      return { ...state, allNotes: payload };
-    case "ADD_TO_TRASH":
-      return { ...state, trashNotes: [...state.trashNotes, payload] };
+    case "TRASH":
+      return { ...state, trashNotes: payload };
     case "RESTORE_FROM_TRASH":
       return { ...state, trashNotes: payload };
     case "EMPTY_TRASH":

@@ -1,8 +1,8 @@
 .notes-container {
   gap: 1rem;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto;
   flex-wrap: wrap;
   padding: 1rem;
@@ -20,6 +20,7 @@
   background-color: rgba(0, 0, 0, 0.525);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   z-index: 2;
+  padding-top: 3rem;
 }

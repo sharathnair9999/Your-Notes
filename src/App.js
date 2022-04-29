@@ -7,7 +7,6 @@ import {
   LabelsPage,
   Landing,
   Login,
-  NotesLanding,
   NotesPage,
   NotesSection,
   ResetPassword,
@@ -53,8 +52,7 @@ function App() {
             </RequireAuth>
           }
         >
-          <Route index element={<NotesLanding />} />
-          <Route path="all-notes" element={<NotesSection />} />
+          <Route index element={<NotesSection />} />
           <Route path="label" element={<LabelsPage />} />
           <Route path="archive" element={<ArchivesPage />} />
           <Route path="trash" element={<TrashPage />} />

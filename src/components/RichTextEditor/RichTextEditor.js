@@ -48,6 +48,14 @@ const RichTextEditor = ({
   const [edit, setEdit] = useState(editNote || false);
   const noteTextRef = useRef(null);
   const currentRef = useRef(null);
+  const wc_hex_is_light = (color) => {
+    const hex = color.replace("#", "");
+    const c_r = parseInt(hex.substr(0, 2), 16);
+    const c_g = parseInt(hex.substr(2, 2), 16);
+    const c_b = parseInt(hex.substr(4, 2), 16);
+    const brightness = (c_r * 299 + c_g * 587 + c_b * 114) / 1000;
+    return brightness > 155;
+  };
 
   useEffect(() => {
     noteState?.bgColor
@@ -73,6 +81,7 @@ const RichTextEditor = ({
       showAlert("error", "Enter both Title and Description", 1500);
       return;
     }
+
     await addNewNote(
       noteState.title,
       noteState.description,
@@ -80,7 +89,8 @@ const RichTextEditor = ({
       noteState.bgColor,
       noteState.isPinned,
       noteState.createdDate,
-      noteState.createdTime
+      noteState.createdTime,
+      noteState.bgLight
     );
     setEdit(false);
     newNote && setCreateNote((state) => !state);
@@ -99,43 +109,55 @@ const RichTextEditor = ({
       noteState.isPinned,
       noteState.bgColor,
       noteState.createdDate,
-      noteState.createdTime
+      noteState.createdTime,
+      noteState.bgLight
     );
     setEdit(false);
   };
 
   const changeBg = () => {
-    var randomColor = colorArray[Math.floor(Math.random() * colorArray.length)];
-    setNoteState((state) => ({ ...state, bgColor: randomColor }));
+    let randomColor = colorArray[Math.floor(Math.random() * colorArray.length)];
+    let bgLight = wc_hex_is_light(randomColor);
+    setNoteState((state) => ({
+      ...state,
+      bgColor: randomColor,
+      bgLight: bgLight,
+    }));
     noteTextRef.current.style.backgroundColor = randomColor;
   };
 
-  const addToTags = (selectedList, selectedItem) => {
+  const addToTags = (selectedList) => {
     setNoteState((state) => {
       return { ...state, tags: [...selectedList] };
     });
   };
 
-  const removeTag = (selectedList, selectedItem) => {
+  const removeTag = (selectedList) => {
     setNoteState((state) => {
       return { ...state, tags: [...selectedList] };
     });
   };
 
   return (
-    <div ref={noteTextRef} className={`text-editor-container flex flex-col`}>
+    <div ref={noteTextRef} className={`text-editor-container  flex flex-col`}>
       <ReactTooltip
         place="bottom"
         afterShow={() => {
           setTimeout(ReactTooltip.hide, 2000);
         }}
       />
-      <div className="input-container flex justify-space-btw items-center">
+      <div
+        className={`input-container flex justify-space-btw items-center ${
+          noteState.bgLight ? "text-dark" : "text-white"
+        }`}
+      >
         {edit && (
           <input
             autoFocus={edit}
             type="text"
-            className="note-title w-100"
+            className={`note-title w-100 ${
+              noteState.bgLight ? "text-dark" : "text-white"
+            }`}
             placeholder="Title"
             value={noteState.title}
             onChange={(e) => {
@@ -143,7 +165,15 @@ const RichTextEditor = ({
             }}
           />
         )}
-        {!edit && <p className="note-title-read">{noteState.title}</p>}
+        {!edit && (
+          <p
+            className={`note-title-read  ${
+              noteState.bgLight ? "text-dark" : "text-white"
+            }`}
+          >
+            {noteState.title}
+          </p>
+        )}
 
         <button
           className="btn-transparent"
@@ -177,21 +207,29 @@ const RichTextEditor = ({
       {edit ? (
         <ReactQuill
           id="text-editor"
-          className="text-editor"
+          className={`text-editor ${noteState.bgLight ? "text-dark" : "text-white"}`}
           value={noteState.description}
           onChange={(value) => {
             setNoteState((state) => ({ ...state, description: value }));
           }}
-          theme="snow"
           modules={modules}
           formats={formats}
           placeholder="Start writing your note here..."
         />
       ) : (
-        <div className="text-editor-contents my-auto" ref={currentRef}></div>
+        <div
+          className={`text-editor-contents my-auto ${
+            noteState.bgLight ? "text-dark" : "text-white"
+          }`}
+          ref={currentRef}
+        ></div>
       )}
       {!edit && (
-        <div className="created-at flex justify-fs items-fs gap-sm  mr-auto">
+        <div
+          className={`created-at flex justify-fs items-fs gap-sm  mr-auto  ${
+            noteState.bgLight ? "text-dark" : "text-white"
+          } `}
+        >
           <p>Created at : {noteState.createdDate}</p>
           <p>{noteState.createdTime}</p>
         </div>
@@ -207,7 +245,9 @@ const RichTextEditor = ({
         </div>
 
         {edit && (
-          <div className="label-section">
+          <div
+            className={`label-section ${noteState.bgLight ? "text-dark" : "text-white"} `}
+          >
             <Multiselect
               options={availableTags}
               onSelect={addToTags}
@@ -227,8 +267,22 @@ const RichTextEditor = ({
                 },
                 searchBox: {
                   border: "none",
-                  "border-bottom": "1px solid blue",
                   "border-radius": "0px",
+                },
+                inputField: {
+                  color: "white",
+                },
+                option: {
+                  // To change css for dropdown options
+                  color: "white",
+                },
+                optionContainer: {
+                  backgroundColor: "#22223b",
+                  display: "flex",
+                  justifyContent: "flex-start",
+                  alignIems: "center",
+                  flexDirection: "column",
+                  listStyle: "none",
                 },
               }}
             />
@@ -327,7 +381,6 @@ const RichTextEditor = ({
               data-tip="Delete Permanently"
             >
               <AiFillDelete size={"1.5rem"} />
-              
             </button>
           )}
           {canRestore && (

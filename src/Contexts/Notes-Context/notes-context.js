@@ -31,7 +31,8 @@ const NoteProvider = ({ children }) => {
     bgColor,
     isPinned,
     createdDate,
-    createdTime
+    createdTime,
+    bgLight
   ) => {
     const note = {
       title,
@@ -41,6 +42,7 @@ const NoteProvider = ({ children }) => {
       isPinned,
       createdDate,
       createdTime,
+      bgLight,
     };
     try {
       const { data } = await callApi("POST", encodedToken, "/api/notes", {
@@ -62,7 +64,8 @@ const NoteProvider = ({ children }) => {
     isPinned,
     bgColor,
     createdDate,
-    createdTime
+    createdTime,
+    bgLight
   ) => {
     const note = {
       title,
@@ -72,6 +75,7 @@ const NoteProvider = ({ children }) => {
       bgColor,
       createdDate,
       createdTime,
+      bgLight,
     };
     try {
       const { data } = await callApi(
@@ -98,7 +102,8 @@ const NoteProvider = ({ children }) => {
     isPinned,
     bgColor,
     createdDate,
-    createdTime
+    createdTime,
+    bgLight
   ) => {
     try {
       const { data } = await callApi(
@@ -116,6 +121,7 @@ const NoteProvider = ({ children }) => {
         bgColor,
         createdDate,
         createdTime,
+        bgLight,
       };
       notesDispatch({ type: "DELETE_NOTE", payload: notes });
       notesDispatch({ type: "ADD_TO_TRASH", payload: note });
@@ -133,7 +139,8 @@ const NoteProvider = ({ children }) => {
     isPinned,
     bgColor,
     createdDate,
-    createdTime
+    createdTime,
+    bgLight
   ) => {
     const newTrash = notesState.trashNotes.filter((note) => note._id !== _id);
     notesDispatch({ type: "RESTORE_FROM_TRASH", payload: newTrash });
@@ -144,7 +151,8 @@ const NoteProvider = ({ children }) => {
       bgColor,
       isPinned,
       createdDate,
-      createdTime
+      createdTime,
+      bgLight
     );
   };
 
@@ -214,12 +222,12 @@ const NoteProvider = ({ children }) => {
       showAlert("error", "Couldn't delete the note from archives", 1500);
     }
   };
-  
+
   const removeFromTrash = (_id) => {
-    const newTrash = notesState.trashNotes.filter(note=>note._id!==_id)
-    notesDispatch({type:"DELETE_NOTE_FROM_TRASH", payload:newTrash})
+    const newTrash = notesState.trashNotes.filter((note) => note._id !== _id);
+    notesDispatch({ type: "DELETE_NOTE_FROM_TRASH", payload: newTrash });
     showAlert("success", "Deleted Note Permanently", 1500);
-  }
+  };
 
   const value = {
     notesState,
@@ -234,7 +242,7 @@ const NoteProvider = ({ children }) => {
     getArchivedNotes,
     getNotes,
     restoreFromTrash,
-    removeFromTrash
+    removeFromTrash,
   };
   return <NoteContext.Provider value={value}>{children}</NoteContext.Provider>;
 };

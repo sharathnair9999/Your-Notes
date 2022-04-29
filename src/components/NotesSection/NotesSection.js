@@ -18,6 +18,7 @@ const NotesSection = () => {
   const [searchInput, setSearchInput] = useState("");
   useEffect(() => {
     getNotes();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const searchNotes = allNotes.filter((note) =>
     searchInput?.length > 0
@@ -32,7 +33,7 @@ const NotesSection = () => {
   const notPinnedNotes = searchNotes.filter((note) => !note.isPinned);
 
   return (
-    <div className="flex-and-center w-100 flex-col mx-1 mt-1 relative">
+    <div className="flex-and-center w-100 flex-col relative">
       <MainSearchBar
         setSearchInput={setSearchInput}
         searchInput={searchInput}

@@ -7,7 +7,6 @@ import {
   LabelsPage,
   Landing,
   Login,
-  NotesLanding,
   NotesPage,
   NotesSection,
   ResetPassword,

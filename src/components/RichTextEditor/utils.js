@@ -35,5 +35,6 @@ export const newNoteState = {
   bgColor: "#dedfe8",
   isPinned: false,
   createdDate :"",
-  createdTime :""
+  createdTime :"",
+  bgLight:true
 };

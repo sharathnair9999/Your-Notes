@@ -1,42 +1,48 @@
-.text-editor-container{
-  color: var(--black);
+.text-editor-container {
   border-radius: 5px;
   height: 100%;
   width: 100%;
   min-width: 20rem;
   max-width: 30rem;
-  
 }
-.text-editor-contents{
+.text-editor-contents {
   padding: 5px 10px;
 }
-.limit-width{
+
+.text-editor p {
+  min-height: 20rem !important;
+}
+.ql-container.ql-snow{
+  border: none !important;
+}
+.ql-toolbar.ql-snow{
+  border: none !important;
+}
+.limit-width {
   width: 100%;
   max-width: 500px;
 }
 
-.full-width{
+.full-width {
   max-width: 500px;
   width: 100%;
 }
 
-.input-container{
+.input-container {
   padding: 5px 10px;
   width: 95%;
 }
 
-.note-title{
+.note-title {
   background: transparent;
   outline: none;
   border: none;
   font-size: 1.3rem;
   width: 100%;
-
 }
 
-.note-title-read{
+.note-title-read {
   text-transform: capitalize;
-  color: var(--body-bg-full-dark);
   font-weight: 600;
   font-size: 1.3rem;
   white-space: nowrap;
@@ -44,32 +50,30 @@
   text-overflow: ellipsis;
 }
 
-.chips-container-read{
+.chips-container-read {
   padding: 0;
   margin: 0;
 }
 
-.chips-container-read .chip{
+.chips-container-read .chip {
   font-size: 0.7rem;
   background-color: var(--body-bg-full-dark);
-  
 }
 
-.action-btn-section{
+.action-btn-section {
   width: 95%;
   padding: 5px;
-
 }
 
-.btn{
+.btn {
   margin: 0;
 }
 
-.cursor-no-drop{
+.cursor-no-drop {
   cursor: no-drop;
 }
 
-.btn-transparent{
+.btn-transparent {
   padding: 0;
   margin: 0;
   border: none;
@@ -77,7 +81,8 @@
   background: transparent;
 }
 
-.action-btn-section .left-btns button, .action-btn-section .right-btns button{
+.action-btn-section .left-btns button,
+.action-btn-section .right-btns button {
   background-color: transparent;
   outline: none;
   border: none;
@@ -85,13 +90,33 @@
   z-index: 1;
 }
 
-.bold{
+.bold {
   font-weight: bold;
   font-size: 1.1rem;
 }
 
-.created-at{
+.created-at {
   font-size: 0.8rem;
   font-weight: 500;
   padding-left: 10px;
+}
+
+.text-white {
+  color: var(--all-white);
+}
+
+.text-dark {
+  color: var(--body-bg-full-dark);
+}
+
+.bg-dark {
+  background-color: var(--body-bg-full-dark);
+}
+
+.bg-white {
+  background-color: var(--all-white);
+}
+
+@media screen and (max-width:768px) {
+  
 }

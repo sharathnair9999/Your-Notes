@@ -32,7 +32,7 @@ const NotesSection = () => {
   const notPinnedNotes = searchNotes.filter((note) => !note.isPinned);
 
   return (
-    <div className="flex-and-center w-100 flex-col mx-1 mt-1 relative">
+    <div className="notes-page-container flex-and-center w-100 flex-col relative">
       <MainSearchBar
         setSearchInput={setSearchInput}
         searchInput={searchInput}

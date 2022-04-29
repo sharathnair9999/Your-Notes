@@ -20,9 +20,7 @@ const Password = ({ fieldName, fieldValue, onChange, ...other }) => {
         className="show-icon"
       >
         <i
-          className={`fa-solid  ${
-            showPassword ? "fa-eye-slash" : "fa-eye"
-          } cursor`}
+          className={`fa-solid  ${showPassword ? "fa-eye-slash" : "fa-eye"}`}
         ></i>
       </span>
     </div>

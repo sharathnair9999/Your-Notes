@@ -1,22 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { useNotes } from "../../imports/imports";
 import "./NotesPage.css";
 
 const NotesPage = () => {
   const { notesState } = useNotes();
+  const [nav, setNav] = useState(false);
   return (
     <div className="notes-page-section gap-2">
-      <nav className="notes-nav-section show">
+      <button id="nav-toggle" onClick={() => setNav(!nav)}>
+        {nav ? (
+          <i className="fa-solid fa-xmark"></i>
+        ) : (
+          <i className="fa-solid fa-bars"></i>
+        )}
+      </button>
+      <nav className={`notes-nav-section ${nav ? "show" : "hide"}`}>
         <ul className="notes-ul flex justify-fs items-fs flex-col w-100">
           <li>
             <NavLink
               className={({ isActive }) =>
                 `${
                   isActive ? "active-link" : "inactive-link"
-                } w-100 flex justify-fs items-center gap-sm`
+                }  flex justify-fs items-center gap-sm`
               }
-              to={"all-notes"}
+              to={"/"}
             >
               <i className="fa-solid fa-note-sticky"></i>
               <span>Notes</span>

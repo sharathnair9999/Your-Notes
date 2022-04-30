@@ -1,4 +1,4 @@
-import "./NotesSection.css"
+import "./NotesSection.css";
 
 const Modal = ({ children, shown, close }) => {
   return shown ? (
@@ -11,7 +11,7 @@ const Modal = ({ children, shown, close }) => {
     >
       <div
         className="modal-content flex-and-center flex-col gap-1"
-        onClick={e => {
+        onClick={(e) => {
           // do not close modal if anything inside modal content is clicked
           e.stopPropagation();
         }}
@@ -20,6 +20,6 @@ const Modal = ({ children, shown, close }) => {
       </div>
     </div>
   ) : null;
-}
+};
 
-export {Modal}
+export { Modal };

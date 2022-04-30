@@ -19,8 +19,7 @@
   transition: background-color 0.3s ease-in-out;
 }
 
-.chip-active{
+.chip-active {
   background-color: var(--text-white);
   color: var(--body-bg-full-dark);
-
 }

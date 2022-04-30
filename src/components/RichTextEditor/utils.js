@@ -27,14 +27,13 @@ export const modules = {
   ],
 };
 
-
 export const newNoteState = {
   title: "",
   description: "",
   tags: [],
   bgColor: "#dedfe8",
   isPinned: false,
-  createdDate :"",
-  createdTime :"",
-  bgLight:true
+  createdDate: "",
+  createdTime: "",
+  bgLight: true,
 };

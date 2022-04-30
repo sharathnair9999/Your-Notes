@@ -1,5 +1,5 @@
 @import url("/node_modules/mockman-js/dist/style.css");
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Josefin+Sans:wght@300;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&family=Josefin+Sans:wght@300;500;600;700&display=swap");
 
 :root {
   --text-white: #f8f9fa;
@@ -73,24 +73,24 @@ p {
   position: relative;
 }
 
-.w-100{
+.w-100 {
   width: 100%;
 }
 
-.y-auto{
+.y-auto {
   overflow-y: auto;
 }
-.x-auto{
+.x-auto {
   overflow-x: auto;
 }
-.x-scroll{
+.x-scroll {
   overflow-x: scroll;
 }
-.y-scroll{
+.y-scroll {
   overflow-y: scroll;
 }
 
-.text-center{
+.text-center {
   text-align: center;
 }
 

@@ -12,10 +12,10 @@
 .text-editor p {
   min-height: 20rem !important;
 }
-.ql-container.ql-snow{
+.ql-container.ql-snow {
   border: none !important;
 }
-.ql-toolbar.ql-snow{
+.ql-toolbar.ql-snow {
   border: none !important;
 }
 .limit-width {
@@ -117,6 +117,5 @@
   background-color: var(--all-white);
 }
 
-@media screen and (max-width:768px) {
-  
+@media screen and (max-width: 768px) {
 }

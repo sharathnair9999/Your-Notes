@@ -18,7 +18,7 @@ const NotesSection = () => {
   const [searchInput, setSearchInput] = useState("");
   useEffect(() => {
     getNotes();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const searchNotes = allNotes.filter((note) =>
     searchInput?.length > 0

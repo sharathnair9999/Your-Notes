@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import useComponentVisible from "../../components/useComponentVisible";
 import { useNotes } from "../../imports/imports";
@@ -6,7 +6,6 @@ import "./NotesPage.css";
 
 const NotesPage = () => {
   const { notesState } = useNotes();
-  const [nav, setNav] = useState(false);
   const { ref, isComponentVisible, setIsComponentVisible } =
     useComponentVisible(false);
   return (
@@ -22,7 +21,7 @@ const NotesPage = () => {
         )}
       </button>
       <nav
-         ref={ref}
+        ref={ref}
         className={`notes-nav-section ${isComponentVisible ? "show" : "hide"}`}
       >
         <ul

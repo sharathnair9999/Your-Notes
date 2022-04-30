@@ -7,7 +7,9 @@ const ErrorPage = () => {
   return (
     <div className="error-page-section">
       <h1>Page Not Found</h1>
-      <Link className="btn btn-primary" to={"/notes"}>Go To Home</Link>
+      <Link className="btn btn-primary" to={"/notes"}>
+        Go To Home
+      </Link>
       <div className="error-img-container">
         <img
           src={constants.imgUrls.error_404}

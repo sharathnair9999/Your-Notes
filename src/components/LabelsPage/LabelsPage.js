@@ -41,7 +41,14 @@ const LabelsPage = () => {
       {allNotes.length > 0 ? (
         allNotes
           .filter(({ tags }) => tags.some((item) => filter.includes(item)))
-          .map((note) => <RichTextEditor existingNote note={note} canUpdateNote canAddToArchive />)
+          .map((note) => (
+            <RichTextEditor
+              existingNote
+              note={note}
+              canUpdateNote
+              canAddToArchive
+            />
+          ))
       ) : (
         <EmptyData message={"No Notes with you yet."} />
       )}

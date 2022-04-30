@@ -1,4 +1,4 @@
-.search-container{
+.search-container {
   background-color: var(--gray-2);
   padding: 5px 10px;
   border-radius: 10px;
@@ -6,26 +6,26 @@
   width: 90%;
 }
 
-#submit-btn{
+#submit-btn {
   background: transparent;
   border: none;
   outline: none;
 }
 
-.search-input{
-  background: transparent; 
+.search-input {
+  background: transparent;
   outline: none;
   font-size: 1.2rem;
   width: 100%;
-  border: none; 
+  border: none;
 }
 
-@media screen and (max-width:768px) {
-  .search-container{
+@media screen and (max-width: 768px) {
+  .search-container {
     max-width: 200px;
   }
 
-  .search-input{
+  .search-input {
     font-size: 1rem;
   }
 }

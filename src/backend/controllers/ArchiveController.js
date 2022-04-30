@@ -71,7 +71,6 @@ export const restoreFromArchivesHandler = function (schema, request) {
   return new Response(200, {}, { archives: user.archives, notes: user.notes });
 };
 
-
 // path:  /api//archives/trash/:noteId
 export const moveArchivedToTrashHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);

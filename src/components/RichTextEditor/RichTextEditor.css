@@ -83,7 +83,7 @@
 
 .action-btn-section .left-btns button,
 .action-btn-section .right-btns button {
-  background-color: transparent;
+  background: transparent;
   outline: none;
   border: none;
   border-radius: 50%;

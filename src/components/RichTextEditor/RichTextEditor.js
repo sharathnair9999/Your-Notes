@@ -195,9 +195,15 @@ const RichTextEditor = ({
         >
           {!cannotEdit ? (
             noteState.isPinned ? (
-              <BsPinAngleFill size={"1.1rem"} />
+              <BsPinAngleFill
+                size={"1.1rem"}
+                color={noteState.bgLight ? "black" : "white"}
+              />
             ) : (
-              <BsPinAngle size={"1.1rem"} />
+              <BsPinAngle
+                size={"1.1rem"}
+                color={noteState.bgLight ? "black" : "white"}
+              />
             )
           ) : (
             ""
@@ -207,7 +213,9 @@ const RichTextEditor = ({
       {edit ? (
         <ReactQuill
           id="text-editor"
-          className={`text-editor ${noteState.bgLight ? "text-dark" : "text-white"}`}
+          className={`text-editor ${
+            noteState.bgLight ? "text-dark" : "text-white"
+          }`}
           value={noteState.description}
           onChange={(value) => {
             setNoteState((state) => ({ ...state, description: value }));
@@ -235,10 +243,16 @@ const RichTextEditor = ({
         </div>
       )}
 
-      <div className="action-btn-section flex justify-center items-center mt-auto">
+      <div
+        className={`action-btn-section flex justify-center items-center mt-auto`}
+      >
         <div className="left-btns flex-and-center gap-sm ">
           {edit && (
-            <button onClick={() => changeBg()} data-tip="Change Background">
+            <button
+              className={`${noteState.bgLight ? "text-dark" : "text-white"}`}
+              onClick={() => changeBg()}
+              data-tip="Change Background"
+            >
               <i className="fa-solid fa-palette"></i>
             </button>
           )}
@@ -246,7 +260,9 @@ const RichTextEditor = ({
 
         {edit && (
           <div
-            className={`label-section ${noteState.bgLight ? "text-dark" : "text-white"} `}
+            className={`label-section ${
+              noteState.bgLight ? "text-dark" : "text-white"
+            } `}
           >
             <Multiselect
               options={availableTags}
@@ -310,7 +326,7 @@ const RichTextEditor = ({
                   (!extractContent(noteState.description) ||
                     !noteState.title) &&
                   "cursor-no-drop"
-                }  `}
+                }  ${noteState.bgLight ? "text-dark" : "text-white"} `}
                 onClick={async () => {
                   canUpdateNote ? await updateThisNote() : await addThisNote();
                 }}
@@ -323,6 +339,7 @@ const RichTextEditor = ({
                 onClick={() => {
                   setEdit(true);
                 }}
+                className={`${noteState.bgLight ? "text-dark" : "text-white"}`}
               >
                 <AiTwotoneEdit size={"1.1rem"} />
               </button>
@@ -335,6 +352,7 @@ const RichTextEditor = ({
               onClick={() =>
                 addNoteToArchives(currentNoteState._id, canAddToArchive)
               }
+              className={`${noteState.bgLight ? "text-dark" : "text-white"}`}
               data-tip="Add to Archives"
             >
               <BsArchiveFill size={"1.1rem"} />
@@ -344,25 +362,16 @@ const RichTextEditor = ({
             <button
               onClick={() => restoreNoteFromArchives(currentNoteState._id)}
               data-tip="Remove From Archives"
+              className={`${noteState.bgLight ? "text-dark" : "text-white"}`}
             >
               <BsArchiveFill size={"1.1rem"} />
             </button>
           )}
           {!disableDelete && !canRestore && !inArchives && (
             <button
-              onClick={() =>
-                deleteNote(
-                  noteState.title,
-                  noteState.description,
-                  noteState.tags,
-                  noteState._id,
-                  noteState.isPinned,
-                  noteState.bgColor,
-                  noteState.createdDate,
-                  noteState.createdTime
-                )
-              }
+              onClick={() => deleteNote(noteState._id)}
               data-tip="Delete"
+              className={`${noteState.bgLight ? "text-dark" : "text-white"}`}
             >
               <AiTwotoneDelete size={"1.1rem"} />
             </button>
@@ -371,6 +380,7 @@ const RichTextEditor = ({
             <button
               onClick={() => deleteFromArchives(currentNoteState._id)}
               data-tip="Delete From Archives"
+              className={`${noteState.bgLight ? "text-dark" : "text-white"}`}
             >
               <AiTwotoneDelete size={"1.1rem"} />
             </button>
@@ -379,6 +389,7 @@ const RichTextEditor = ({
             <button
               onClick={() => removeFromTrash(currentNoteState._id)}
               data-tip="Delete Permanently"
+              className={`${noteState.bgLight ? "text-dark" : "text-white"}`}
             >
               <AiFillDelete size={"1.5rem"} />
             </button>
@@ -386,17 +397,9 @@ const RichTextEditor = ({
           {canRestore && (
             <button
               onClick={() => {
-                restoreFromTrash(
-                  noteState.title,
-                  noteState.description,
-                  noteState.tags,
-                  noteState._id,
-                  noteState.isPinned,
-                  noteState.bgColor,
-                  noteState.createdDate,
-                  noteState.createdTime
-                );
+                restoreFromTrash(noteState._id);
               }}
+              className={`${noteState.bgLight ? "text-dark" : "text-white"}`}
               data-tip="Restore Note"
             >
               <FaTrashRestore size={"1.1rem"} />

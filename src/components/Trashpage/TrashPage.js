@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Trashpage.css";
 import {
   useNotes,
@@ -10,9 +10,13 @@ import {
 import { BsFillTrashFill } from "react-icons/bs";
 
 const TrashPage = () => {
-  const { notesState, notesDispatch } = useNotes();
+  const { notesState, deleteAllPermanently, getAllTrashNotes } = useNotes();
   const { trashNotes } = notesState;
   const [searchInput, setSearchInput] = useState("");
+
+  useEffect(() => {
+    trashNotes.length === 0 && getAllTrashNotes();
+  }, [trashNotes]);
 
   return (
     <div className="flex-and-center flex-col">
@@ -23,7 +27,7 @@ const TrashPage = () => {
       <div className="my-1 flex-and-center w-100">
         <button
           className="btn btn-primary flex-and-center ml-auto gap-sm"
-          onClick={() => notesDispatch({ type: "EMPTY_TRASH" })}
+          onClick={() => deleteAllPermanently()}
         >
           <BsFillTrashFill />
           <span>Clear Trash</span>

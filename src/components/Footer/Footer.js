@@ -18,7 +18,7 @@ const Footer = () => {
           </li>
           <li>
             <a
-              href="https://twitter.com/Nairified"
+              href="https://twitter.com/sharathnair9999"
               target="_blank"
               rel="noreferrer"
             >

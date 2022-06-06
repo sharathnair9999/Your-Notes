@@ -40,9 +40,6 @@ const UserAvatar = () => {
               !isComponentVisible ? "show-options" : "hide-options"
             }`}
           >
-            <span className="option">
-              <Link to={"#"}>My Profile</Link>
-            </span>
             <span
               onClick={() => {
                 setTimeout(() => {

@@ -1,6 +1,7 @@
 .chips-container {
   justify-content: center;
-  gap: 3rem;
+  column-gap: 2rem;
+  row-gap: 1rem;
   width: 100%;
 }
 

@@ -37,13 +37,14 @@ a {
 }
 
 ::-webkit-scrollbar-track {
+  width: 4px;
   background: var(--text-white);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background: var(--body-bg-full-dark);
+  background: #4f4f88;
 }
 
 .secondary-link {

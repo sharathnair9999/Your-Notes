@@ -19,6 +19,7 @@ const NotesSection = () => {
   useEffect(() => {
     getNotes();
   }, []);
+  console.log(allNotes);
   const searchNotes = allNotes.filter((note) =>
     searchInput?.length > 0
       ? note.title.toLowerCase().includes(searchInput.toLowerCase()) ||
@@ -68,15 +69,15 @@ const NotesSection = () => {
       </div>
       {allNotes?.length > 0 ? (
         searchNotes?.length > 0 ? (
-          <div className="flex items-center justify-space-btw y-auto">
+          <div className="flex items-center justify-center w-100 y-auto">
             {pinnedNotes?.length > 0 ? (
               <div className="flex flex-col items-center gap-sm mt-1 justify-fs ">
-                <div className="flex flex-col gap-sm justify-fs items-center ">
+                <div className="flex flex-col gap-sm justify-fs items-center w-100 ">
                   <p className="flex-and-center gap-sm text-center">
                     <BsPinAngleFill />{" "}
                     <span>{`Pinned Notes - ${pinnedNotes.length}`}</span>
                   </p>
-                  <div className="notes-container">
+                  <div className="notes-container w-100">
                     {pinnedNotes.map((note) => (
                       <RichTextEditor
                         note={note}
@@ -87,12 +88,12 @@ const NotesSection = () => {
                     ))}
                   </div>
                 </div>
-                <div className="flex flex-col gap-sm justify-fs items-center ">
-                  <p className="flex-and-center gap-sm text-center">
+                <div className="flex flex-col gap-sm justify-fs items-center w-100">
+                  <p className="flex-and-center gap-sm text-center w-100">
                     <BsPinAngleFill />{" "}
                     <span>{`Other Notes - ${notPinnedNotes.length}`}</span>
                   </p>
-                  <div className="notes-container">
+                  <div className="notes-container w-100">
                     {notPinnedNotes.map((note) => (
                       <RichTextEditor
                         note={note}
@@ -107,9 +108,8 @@ const NotesSection = () => {
             ) : (
               <div>
                 {allNotes.length > 0 ? (
-                  <div className="flex flex-col gap-1 justify-fs items-fs w-100">
-                    <p>{`Added Notes - ${allNotes.length}`}</p>
-                    <div className="notes-container">
+                  <div className="flex flex-col gap-1 justify-fs items-center w-100">
+                    <div className="notes-container flex-col w-100">
                       {notPinnedNotes.map((note) => (
                         <RichTextEditor
                           note={note}

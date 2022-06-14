@@ -145,34 +145,34 @@ const RichTextEditor = ({
         )}
         {!edit && <p className="note-title-read">{noteState.title}</p>}
 
-        <button
-          className="btn-transparent"
-          data-tip="Pin"
-          onClick={() => {
-            if (!edit) {
-              showAlert(
-                "error",
-                "Changes can be applied only in Edit Mode",
-                2000
+        {!edit && (
+          <button
+            className="btn-transparent"
+            data-tip="Pin"
+            onClick={() => {
+              updateNote(
+                noteState.title,
+                noteState.description,
+                noteState.tags,
+                noteState._id,
+                noteState.isPinned ? false : true,
+                noteState.bgColor,
+                noteState.createdDate,
+                noteState.createdTime
               );
-              return;
-            }
-            setNoteState((state) => ({
-              ...state,
-              isPinned: !state.isPinned,
-            }));
-          }}
-        >
-          {!cannotEdit ? (
-            noteState.isPinned ? (
-              <BsPinAngleFill size={"1.1rem"} />
+            }}
+          >
+            {!cannotEdit ? (
+              noteState.isPinned ? (
+                <BsPinAngleFill size={"1.1rem"} />
+              ) : (
+                <BsPinAngle size={"1.1rem"} />
+              )
             ) : (
-              <BsPinAngle size={"1.1rem"} />
-            )
-          ) : (
-            ""
-          )}
-        </button>
+              ""
+            )}
+          </button>
+        )}
       </div>
       {edit ? (
         <ReactQuill
@@ -327,7 +327,6 @@ const RichTextEditor = ({
               data-tip="Delete Permanently"
             >
               <AiFillDelete size={"1.5rem"} />
-              
             </button>
           )}
           {canRestore && (
